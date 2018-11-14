@@ -1,12 +1,12 @@
-const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
-const screenSize = { 
-    width: canvas.width, 
-    height: canvas.height 
-}
-
 class Game {
     constructor() {
+        this.canvas = document.getElementById("game-canvas");
+        this.ctx = canvas.getContext("2d");
+        this.screenSize = { 
+            width: canvas.width, 
+            height: canvas.height 
+        }
+        
         this.elves = [];
         this.bullets = [];
         this.gingerbreadman = [];
@@ -27,5 +27,3 @@ class Game {
         requestAnimationFrame(this.update);
     }
 }
-
-const game = new Game();
