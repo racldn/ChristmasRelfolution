@@ -7,8 +7,8 @@ class Elf {
     this.dx = 0.3;
 
     this.currentFrame = 0;
-    this.spriteHeight = 115;
-    this.spriteWidth = 168 / 2;
+    this.spriteHeight = 100;
+    this.spriteWidth = 146 / 2;
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
 
