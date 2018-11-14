@@ -3,7 +3,7 @@ class Elf {
     this.canvas = document.getElementById("game-canvas");
     this.ctx = this.canvas.getContext("2d");
     this.x = 50;
-    this.y = Math.floor(Math.random() * 6) * 100 + 50;
+    this.y = Math.floor(Math.random() * 6) * 100;
     this.dx = 0.3;
 
     this.currentFrame = 0;
