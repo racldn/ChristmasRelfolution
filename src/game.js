@@ -1,12 +1,7 @@
 class Game {
     constructor() {
         this.canvas = document.getElementById("game-canvas");
-        this.ctx = canvas.getContext("2d");
-        this.screenSize = { 
-            width: canvas.width, 
-            height: canvas.height 
-        }
-        
+        this.ctx = this.canvas.getContext("2d");
         this.elves = [];
         this.bullets = [];
         this.gingerbreadman = [];
@@ -14,6 +9,8 @@ class Game {
     }
 
     update() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
         this.elves.forEach((elf) => {
             elf.update();
         });
@@ -23,7 +20,17 @@ class Game {
         this.bullets.forEach((bullet) => {
             bullet.update();
         });
+        
+        requestAnimationFrame(() => { this.update });
+    }
 
-        requestAnimationFrame(this.update);
+    addElf() {  
+        this.elves.push(new Elf());
     }
 }
+
+const game = new Game();
+
+setInterval(() => {
+    game.addElf();
+}, 3000);
