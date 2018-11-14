@@ -20,8 +20,8 @@ class Game {
         this.bullets.forEach((bullet) => {
             bullet.update();
         });
-        
-        requestAnimationFrame(() => { this.update });
+
+        requestAnimationFrame(() => { this.update() });
     }
 
     addElf() {  
