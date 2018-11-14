@@ -14,15 +14,12 @@ class Bullet {
 
   draw(canvas) {
     var ctx = canvas.getContext('2d') 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    console.log(canvas.height + 'height')
-    console.log(canvas.width + "width") // sets all pixels in the context (game board) from starting point (0, 0 - top left) and size (canvas width, canvas height) to transparent black, erasing previously drawn content - this removes trails  // should probably only be called by game.js
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // sets all pixels in the context (game board) from starting point (0, 0 - top left) and size (canvas width, canvas height) to transparent black, erasing previously drawn content - this removes trails  // should probably only be called by game.js
     ctx.beginPath();
     ctx.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2, true);
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
-    requestAnimationFrame(() => { this.update(canvas) });
+    requestAnimationFrame(() => { this.update(canvas) }); //testing bullet movement accross the screen
   }
 }

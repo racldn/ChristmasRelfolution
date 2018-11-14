@@ -15,7 +15,7 @@
 
 <body>
   <!-- The canvas for the panning background -->
-  <canvas id="screen" width="310" height="310">
+  <canvas id="screen" width="800" height="600">
     Your browser does not support canvas. Please try again with a different browser.
   </canvas>
   <!-- <script src="game.js"></script> -->
@@ -31,9 +31,10 @@
   var canvas = document.getElementById('screen');
   var ctx = canvas.getContext('2d');
   var screenSize = canvas.height / canvas.width;
-  var bullet = new Bullet({ x: 6, y: canvas.height / 2 }, { dx: 5, dy: 0 })
-
+  var bullet = new Bullet({ x: 780, y: canvas.height / 2 }, { dx: -5, dy: 0 })
+  
   bullet.update(canvas)
+  
 
 
 </script>
