@@ -33,4 +33,4 @@ const game = new Game();
 
 setInterval(() => {
     game.addElf();
-}, 3000);
+}, 5000);
