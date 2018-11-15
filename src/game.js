@@ -113,7 +113,6 @@ class Game {
 
     addBullet(bullet) {
         this.bullets.push(bullet);
-        console.log(this.bullets);
     }
 
     addWeapon(weapon) {

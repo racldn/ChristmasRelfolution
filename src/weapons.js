@@ -8,10 +8,9 @@ class Weapon{
     this.position = {x: x, y: y};
     this.draw(this.ctx);
     this.game = game;
-   // this.bullets = [];
     setInterval(() => {
       this.callBullet();
-    }, 3000);
+    }, 2000);
   }
 
   draw(ctx) {
@@ -23,7 +22,10 @@ class Weapon{
 
   callBullet(){
     console.log(this.center);
-    let bullet = new Bullet(this.center, {dx: -3, dy: 0});
+    // Object.assign creates copy of this.center 
+    //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
+    // By calling Object.assign on this.center, we're creating a copy that is passed to the constructor.)
+    let bullet = new Bullet(Object.assign({}, this.center), {dx: -3, dy: 0}); 
     this.game.addBullet(bullet);
   }
 
@@ -31,12 +33,10 @@ class Weapon{
     this.draw(ctx);
   }
 
-  
-
-  contains(mx, my) {
-    return  (this.x <= mx) && (this.x + this.w >= mx) &&
-            (this.y <= my) && (this.y + this.h >= my);
-  }
+  // contains(mx, my) {
+  //   return  (this.x <= mx) && (this.x + this.w >= mx) &&
+  //           (this.y <= my) && (this.y + this.h >= my);
+  // }
 }
 
 
