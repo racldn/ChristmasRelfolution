@@ -2,11 +2,13 @@ class Elf {
   constructor() {
     this.canvas = document.getElementById("game-canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.x = 50;
+    this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
     this.dx = 0.3;
 
     this.currentFrame = 0;
+    this.totalFrames = 2;
+
     this.spriteHeight = 100;
     this.spriteWidth = 146 / 2;
     this.srcX = this.currentFrame * this.spriteWidth;
@@ -25,7 +27,7 @@ class Elf {
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
     } else {
-      if (this.currentFrame == 0) {
+      if (this.currentFrame < this.totalFrames - 1) {
         this.currentFrame++;
       } else {
         this.currentFrame = 0;
@@ -38,7 +40,7 @@ class Elf {
   }
 
   update() {
-    if(this.x < this.canvas.width) {
+    if(this.x + this.spriteWidth < this.canvas.width) {
       this.x += this.dx;
     }
     this.draw();
