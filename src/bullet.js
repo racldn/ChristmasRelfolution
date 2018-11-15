@@ -13,18 +13,19 @@ class Bullet {
 
     this.animTick = 30;
     this.currentAnimTick = 0;
+    this.canvas = document.getElementById("canvas");
+    this.ctx = this.canvas.getContext("2d");
   }
 
-  update(canvas) {
+  update(ctx) {
     if (this.center.x > 0) {
       this.center.x += this.velocity.dx;
     }
     // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
-    this.draw(canvas);
+    this.draw(ctx);
   }
 
-  draw(canvas) {
-    const ctx = canvas.getContext('2d')
+  draw(ctx) {
     let img = new Image();
     img.src = ("./assets/candycane.png")
   

@@ -111,6 +111,8 @@ class Game {
         this.elves.push(new Elf());
     }
 
+    
+
     addWeapon(weapon) {
         this.weapons.push(weapon);
         this.valid = false;
