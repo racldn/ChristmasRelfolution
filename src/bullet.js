@@ -17,31 +17,29 @@ class Bullet {
 
   update(canvas) {
     if (this.center.x > 0) {
-      this.center.x += this.velocity.dx
+      this.center.x += this.velocity.dx;
     }
     // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
-    this.draw(canvas)
+    this.draw(canvas);
   }
 
   draw(canvas) {
-    var ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d')
     let img = new Image();
     img.src = ("./assets/candycane.png")
-    ctx.clearRect(0, 0, canvas.width, canvas.height) // should probavly only be called by game.js
+  
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
     } else {
       if (this.currentFrame < this.totalFrames - 1) {
-        this.currentFrame++
+        this.currentFrame++;
       } else {
-        this.currentFrame = 0
+        this.currentFrame = 0;
       }
-      this.currentAnimTick = 0
+      this.currentAnimTick = 0;
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
     ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.center.x, this.center.y, this.spriteWidth, this.spriteHeight);
-
-    requestAnimationFrame(() => { this.update(canvas) }) // only for testing
   }
 }
