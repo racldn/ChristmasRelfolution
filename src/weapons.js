@@ -21,7 +21,6 @@ class Weapon{
   }
 
   callBullet(){
-    console.log(this.center);
     // Object.assign creates copy of this.center 
     //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
     // By calling Object.assign on this.center, we're creating a copy that is passed to the constructor.)
