@@ -8,7 +8,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      /* background: rgb(164, 164, 201); */
+      background: rgb(164, 164, 201);
     }
   </style>
 </head>
@@ -31,7 +31,8 @@
   var canvas = document.getElementById('screen');
   var ctx = canvas.getContext('2d');
   // var screenSize = canvas.height / canvas.width;
-  var bullet = new Bullet({ x: 800, y: canvas.height / 2 }, { dx: -3, dy: 0 })
+  var bullet = new Bullet({ x: 800, y: 0}, { dx: -3, dy: 0 })
+
 
   bullet.update(canvas)
 
