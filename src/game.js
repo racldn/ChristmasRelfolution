@@ -111,7 +111,10 @@ class Game {
         this.elves.push(new Elf());
     }
 
-    
+    addBullet(bullet) {
+        this.bullets.push(bullet);
+        console.log(this.bullets);
+    }
 
     addWeapon(weapon) {
         this.weapons.push(weapon);
@@ -201,11 +204,11 @@ class Game {
 }
 
 const game = new Game();
-game.addWeapon(new Weapon(700, 200)); // The default is gray
-game.addWeapon(new Weapon(700, 500));
+game.addWeapon(new Weapon(700, 200, game)); // The default is gray
+game.addWeapon(new Weapon(700, 500, game));
 // Lets make some partially transparent
-game.addWeapon(new Weapon(700, 0));
-game.addWeapon(new Weapon(700, 300));
+game.addWeapon(new Weapon(700, 0, game));
+game.addWeapon(new Weapon(700, 300, game));
 
 setInterval(() => {
     game.addElf(document.getElementById('canvas'));

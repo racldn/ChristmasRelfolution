@@ -1,5 +1,5 @@
 class Weapon{
-  constructor(x, y) {
+  constructor(x, y, game) {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
@@ -7,9 +7,10 @@ class Weapon{
     this.center = {x: (x - 50), y: (y + 50)};
     this.position = {x: x, y: y};
     this.draw(this.ctx);
-    this.bullets = [];
+    this.game = game;
+   // this.bullets = [];
     setInterval(() => {
-      this.addBullet(document.getElementById('canvas'));
+      this.callBullet();
     }, 3000);
   }
 
@@ -20,17 +21,13 @@ class Weapon{
     
   }
 
-  addBullet(){
-    this.bullets.push(new Bullet(this.center, 3));
-    this.bullets.forEach((bullet) => {
-      bullet.draw(this.ctx);
-    });
+  callBullet(){
+    console.log(this.center);
+    let bullet = new Bullet(this.center, {dx: -3, dy: 0});
+    this.game.addBullet(bullet);
   }
 
   update(ctx) {
-    this.bullets.forEach((bullet) => {
-      bullet.update(this.ctx);
-    });
     this.draw(ctx);
   }
 

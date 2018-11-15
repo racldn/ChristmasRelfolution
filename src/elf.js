@@ -5,7 +5,7 @@ class Elf {
     this.x = 50;
     this.y = Math.floor(Math.random() * 6) * 100 + 50;
     this.dx = 2;
-    this.draw();
+    // this.draw();
   }
   
   draw() {

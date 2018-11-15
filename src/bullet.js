@@ -1,7 +1,6 @@
 class Bullet {
   constructor(center, velocity) { // is passed a horizontal and vertical center for the unit to determine spawn location - should be slightly outside the spawning unit's body
     this.center = center; // consists of this.center.x and this.center.y for horizontal and vertical position on the screen
-    this.radius = 5;
     this.velocity = velocity; // consists of this.velocity.x and this.verlocity.y for movement along the x axis and y axis
     this.currentFrame = 0;
     this.totalFrames = 4;
@@ -13,8 +12,7 @@ class Bullet {
 
     this.animTick = 30;
     this.currentAnimTick = 0;
-    this.canvas = document.getElementById("canvas");
-    this.ctx = this.canvas.getContext("2d");
+   
   }
 
   update(ctx) {
@@ -26,6 +24,10 @@ class Bullet {
   }
 
   draw(ctx) {
+    console.log('draw me');
+    console.log(this.center.x);
+    console.log(this.center.y);
+
     let img = new Image();
     img.src = ("./assets/candycane.png")
   
@@ -41,6 +43,7 @@ class Bullet {
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
-    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.center.x, this.center.y, this.spriteWidth, this.spriteHeight);
+    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, (this.center.x -50), (this.center.y - 50), this.spriteWidth, this.spriteHeight);
+    //ctx.drawImage(img, this.center.x, this.center.y);
   }
 }
