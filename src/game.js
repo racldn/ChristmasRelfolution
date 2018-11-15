@@ -164,14 +164,23 @@ class Game {
     }
 
     findCenter(mouse) {
+      if (mouse.x.toString().length == 2) {
+        var mx = 50;
+      } else {
         var mx = parseInt(mouse.x.toString()[0]);
-        var my = parseInt(mouse.y.toString()[0]);
         mx = (mx * 100) + 50;
+      }
+
+      if (mouse.y.toString().length == 2) {
+        var my = 50;
+      } else {
+        var my = parseInt(mouse.y.toString()[0]);
         my = (my * 100) + 50;
-        return {
-            x: mx,
-            y: my
-        };
+      }
+      return {
+        x: mx,
+        y: my
+      };
     }
 
     checkOccupied(mouse) {
