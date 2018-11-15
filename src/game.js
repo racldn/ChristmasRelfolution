@@ -86,7 +86,6 @@ class Game {
             this.draw();
         }, this.interval);
 
-
         this.update();
     }
 
@@ -200,11 +199,11 @@ class Game {
 }
 
 const game = new Game();
-game.addWeapon(new Weapon(0, 0, 100, 100)); // The default is gray
-game.addWeapon(new Weapon(0, 500, 100, 100, 'lightskyblue'));
+game.addWeapon(new Weapon(700, 200)); // The default is gray
+game.addWeapon(new Weapon(700, 500));
 // Lets make some partially transparent
-game.addWeapon(new Weapon(700, 0, 100, 100, 'rgba(127, 255, 212, .5)'));
-game.addWeapon(new Weapon(700, 500, 100, 100, 'rgba(245, 222, 179, .7)'));
+game.addWeapon(new Weapon(700, 0));
+game.addWeapon(new Weapon(700, 300));
 
 setInterval(() => {
     game.addElf(document.getElementById('canvas'));

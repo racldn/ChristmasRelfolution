@@ -1,23 +1,24 @@
 class Weapon{
-  constructor(x, y, w, h, fill) {
-    this.x = x || 0;
-    this.y = y || 0;
-    this.w = w || 1;
-    this.h = h || 1;
-    this.fill = fill || '#AAAAAA';
+  constructor(x, y) {
+    this.canvas = document.getElementById("canvas");
+    this.ctx = this.canvas.getContext("2d");
+    this.x = x;
+    this.y = y;
     this.position = {x: x, y: y};
+    this.draw(this.ctx);
   }
 
   draw(ctx) {
-    ctx.fillStyle = this.fill;
-    ctx.fillRect(this.x, this.y, this.w, this.h);
+    let img = new Image();
+    img.src = ('./assets/gbm.png');
+    ctx.drawImage(img, this.x, this.y);
   }
 
   update(ctx) {
     this.draw(ctx);
   }
 
-  contains (mx, my) {
+  contains(mx, my) {
     return  (this.x <= mx) && (this.x + this.w >= mx) &&
             (this.y <= my) && (this.y + this.h >= my);
   }
