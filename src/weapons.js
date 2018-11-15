@@ -2,10 +2,12 @@ class Weapon{
   constructor(x, y, w, h, fill) {
     this.x = x || 0;
     this.y = y || 0;
-    this.w = w || 1;
-    this.h = h || 1;
-    this.fill = fill || '#AAAAAA';
-    this.position = {x: x, y: y};
+    this.w = 100;
+    this.h = 100;
+    this.lastPosition = {
+      x: this.x,
+      y: this.y
+    }
   }
 
   draw(ctx) {
@@ -17,8 +19,8 @@ class Weapon{
     this.draw(ctx);
   }
 
-  contains (mx, my) {
-    return  (this.x <= mx) && (this.x + this.w >= mx) &&
-            (this.y <= my) && (this.y + this.h >= my);
+  contains (mouseX, mouseY) {
+    return  (this.x <= mouseX) && (this.x + this.w >= mouseX) &&
+            (this.y <= mouseY) && (this.y + this.h >= mouseY);
   }
 }

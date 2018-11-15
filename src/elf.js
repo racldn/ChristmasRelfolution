@@ -1,6 +1,6 @@
 class Elf {
   constructor() {
-    this.canvas = document.getElementById("game-canvas");
+    this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
@@ -22,7 +22,7 @@ class Elf {
   
   draw() {
     let img = new Image();
-    img.src = ('./elf.png');
+    img.src = ('./assets/elf.png');
 
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
