@@ -7,7 +7,7 @@ class Game {
 		this.weapons = [];
     this.canvasOffset = canvas.getBoundingClientRect();
     this.selection;
-    this.dragging = false;
+    this.isDragging = false;
 		this.dragOffsetX = 0;
     this.dragOffsetY = 0;
     this.mouse = { x: 0, y: 0 };
@@ -17,7 +17,7 @@ class Game {
         if(weapon.contains(this.mouse.x, this.mouse.y)) {
           this.dragOffsetX = this.mouse.x - weapon.x;
           this.dragOffsetY = this.mouse.y - weapon.y;
-          this.dragging = true;
+          this.isDragging = true;
           this.selection = weapon;
         }
       })
@@ -26,7 +26,7 @@ class Game {
 		this.canvas.addEventListener('mousemove', (event) => {
       this.updateMousePos(event);
 
-			if (this.dragging) {
+			if (this.isDragging) {
 				this.selection.x = this.mouse.x - this.dragOffsetX;
         this.selection.y = this.mouse.y - this.dragOffsetY;
 			}
@@ -36,12 +36,12 @@ class Game {
 			if (this.isOccupied()) {
 				this.selection.x = this.selection.lastPosition.x;
         this.selection.y = this.selection.lastPosition.y;
-        this.dragging = false;
+        this.isDragging = false;
 			} else {
-        let tile = this.findTile();
-        this.dragging = false;
-				this.selection.x = tile.x;
-        this.selection.y = tile.y;
+        let mouseTile = this.findMouseTile();
+        this.isDragging = false;
+				this.selection.x = mouseTile.x;
+        this.selection.y = mouseTile.y;
 				this.selection.lastPosition = {
 					x: this.selection.x,
 					y: this.selection.y
@@ -78,7 +78,7 @@ class Game {
 		this.weapons.push(weapon);
 	}
 
-	findTile() {
+	findMouseTile() {
 		return {
 			x: Math.floor(this.mouse.x / 100) * 100,
 			y: Math.floor(this.mouse.y / 100) * 100
@@ -91,9 +91,8 @@ class Game {
   }
 
 	isOccupied() {
-    let mouseX = Math.floor(this.mouse.x / 100) * 100;
-    let mouseY = Math.floor(this.mouse.y / 100) * 100;
-    return this.weapons.reverse().some((weapon) => weapon.x == mouseX && weapon.y == mouseY);
+    let tile = this.findMouseTile();
+    return this.weapons.reverse().some((weapon) => weapon.x == tile.x && weapon.y == tile.y);
 	}
 }
 
