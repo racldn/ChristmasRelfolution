@@ -1,6 +1,6 @@
 
-
-function CanvasState(canvas) {
+class Board{
+constructor(canvas) {
   this.canvas = canvas;
   this.width = canvas.width;
   this.height = canvas.height;
@@ -17,7 +17,7 @@ function CanvasState(canvas) {
   this.htmlLeft = html.offsetLeft;
 
   this.valid = false;
-  this.shapes = [];
+  this.weapons = [];
   this.dragging = false;
   this.selection = null;
   this.dragoffx = 0;
@@ -31,11 +31,11 @@ function CanvasState(canvas) {
     var mouse = myState.getMouse(e);
     var mx = mouse.x;
     var my = mouse.y;
-    var shapes = myState.shapes;
-    var l = shapes.length;
+    var weapons = myState.weapons;
+    var l = weapons.length;
     for (var i = l-1; i >= 0; i--) {
-      if (shapes[i].contains(mx, my)) {
-        var mySel = shapes[i];
+      if (weapons[i].contains(mx, my)) {
+        var mySel = weapons[i];
         myState.dragoffx = mx - mySel.x;
         myState.dragoffy = my - mySel.y;
         myState.dragging = true;
@@ -80,13 +80,13 @@ function CanvasState(canvas) {
   setInterval(function() { myState.draw(); }, myState.interval);
 }
 
-CanvasState.prototype.checkOccupied = function(mouse) {
+checkOccupied (mouse) {
   var mx = parseInt(mouse.x.toString()[0]);
   var my = parseInt(mouse.y.toString()[0]);
-  var shapes = this.shapes;
-  var l = shapes.length;
+  var weapons = this.weapons;
+  var l = weapons.length;
   for (var i = l-1; i >= 0; i--) {
-    var mySel = shapes[i];
+    var mySel = weapons[i];
     var gridX = parseInt(mySel.position.x.toString()[0]);
     var gridY = parseInt(mySel.position.y.toString()[0]);
     if (gridX == mx && gridY == my) {
@@ -95,7 +95,7 @@ CanvasState.prototype.checkOccupied = function(mouse) {
   }
 }
 
-CanvasState.prototype.findCenter = function(mouse) {
+findCenter (mouse) {
   var mx = parseInt(mouse.x.toString()[0]);
   var my = parseInt(mouse.y.toString()[0]);
   mx = (mx * 100) + 50;
@@ -103,26 +103,26 @@ CanvasState.prototype.findCenter = function(mouse) {
   return {x: mx, y: my};
 }
 
-CanvasState.prototype.addShape = function(shape) {
-  this.shapes.push(shape);
+addWeapon (weapon) {
+  this.weapons.push(weapon);
   this.valid = false;
 }
 
-CanvasState.prototype.clear = function() {
+clear () {
   this.ctx.clearRect(0, 0, this.width, this.height);
 }
 
-CanvasState.prototype.draw = function() {
+draw () {
   if (!this.valid) {
     var ctx = this.ctx;
-    var shapes = this.shapes;
+    var weapons = this.weapons;
     this.clear();
-    var l = shapes.length;
+    var l = weapons.length;
     for (var i = 0; i < l; i++) {
-      var shape = shapes[i];
-      if (shape.x > this.width || shape.y > this.height ||
-          shape.x + shape.w < 0 || shape.y + shape.h < 0) continue;
-      shapes[i].draw(ctx);
+      var weapon = weapons[i];
+      if (weapon.x > this.width || weapon.y > this.height ||
+          weapon.x + weapon.w < 0 || weapon.y + weapon.h < 0) continue;
+      weapons[i].draw(ctx);
     }
 
     if (this.selection != null) {
@@ -136,7 +136,7 @@ CanvasState.prototype.draw = function() {
   }
 }
 
-CanvasState.prototype.getMouse = function(e) {
+getMouse (e) {
   var element = this.canvas, offsetX = 0, offsetY = 0, mx, my;
   if (element.offsetParent !== undefined) {
     do {
@@ -152,14 +152,14 @@ CanvasState.prototype.getMouse = function(e) {
 
   return {x: mx, y: my};
 }
-
+}
 function init() {
-  var s = new CanvasState(document.getElementById('canvas'));
-  s.addShape(new Weapon(40,40,50,50)); // The default is gray
-  s.addShape(new Weapon(60,140,40,60, 'lightskyblue'));
+  var board = new Board(document.getElementById('canvas'));
+  board.addWeapon(new Weapon(40,40,50,50)); // The default is gray
+  board.addWeapon(new Weapon(60,140,40,60, 'lightskyblue'));
   // Lets make some partially transparent
-  s.addShape(new Weapon(80,150,60,30, 'rgba(127, 255, 212, .5)'));
-  s.addShape(new Weapon(125,80,30,80, 'rgba(245, 222, 179, .7)'));
+  board.addWeapon(new Weapon(80,150,60,30, 'rgba(127, 255, 212, .5)'));
+  board.addWeapon(new Weapon(125,80,30,80, 'rgba(245, 222, 179, .7)'));
 }
 
 init();
