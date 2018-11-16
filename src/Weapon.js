@@ -29,7 +29,7 @@ class Weapon {
     // Object.assign creates copy of this.center 
     //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
     // By calling Object.assign on this.center, we're creating a copy that is passed to the constructor.)
-    let bullet = new Bullet(Object.assign({}, this.center), {
+    let bullet = new Bullet(Object.assign({}, this.lastPosition), {
       dx: -3,
       dy: 0
     });
