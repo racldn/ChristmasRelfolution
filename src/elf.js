@@ -1,10 +1,11 @@
 class Elf {
-  constructor() {
+  constructor(game) {
+    this.game = game;
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
-    this.dx = 0.3;
+    this.dx = 1;
 
     this.currentFrame = 0;
     this.totalFrames = 2;
@@ -42,6 +43,8 @@ class Elf {
   update() {
     if(this.x + this.spriteWidth < this.canvas.width) {
       this.x += this.dx;
+    } else {
+      // lose condition
     }
     this.draw();
   }

@@ -5,49 +5,8 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-    this.canvasOffset = canvas.getBoundingClientRect();
-    this.selection;
-    this.isDragging = false;
-		this.dragOffsetX = 0;
-    this.dragOffsetY = 0;
-    this.mouse = { x: 0, y: 0 };
 
-		this.canvas.addEventListener('mousedown', (e) => {      
-      this.weapons.reverse().some((weapon) => {
-        if(weapon.contains(this.mouse.x, this.mouse.y)) {
-          this.dragOffsetX = this.mouse.x - weapon.x;
-          this.dragOffsetY = this.mouse.y - weapon.y;
-          this.isDragging = true;
-          this.selection = weapon;
-        }
-      })
-    }, true);
-    
-		this.canvas.addEventListener('mousemove', (event) => {
-      this.updateMousePos(event);
-
-			if (this.isDragging) {
-				this.selection.x = this.mouse.x - this.dragOffsetX;
-        this.selection.y = this.mouse.y - this.dragOffsetY;
-			}
-    }, true);
-    
-		this.canvas.addEventListener('mouseup', (event) => {
-			if (this.isOccupied()) {
-				this.selection.x = this.selection.lastPosition.x;
-        this.selection.y = this.selection.lastPosition.y;
-        this.isDragging = false;
-			} else {
-        let mouseTile = this.findMouseTile();
-        this.isDragging = false;
-				this.selection.x = mouseTile.x;
-        this.selection.y = mouseTile.y;
-				this.selection.lastPosition = {
-					x: this.selection.x,
-					y: this.selection.y
-        }
-			}
-    }, true);
+		this.dragDrop = new DragDrop(this.canvas, this.weapons);;
 
 		this.update();
 	}
@@ -63,45 +22,45 @@ class Game {
 		});
 		this.bullets.forEach((bullet) => {
 			bullet.update(this.ctx);
-    });
+		});
+
+		this.updateWeaponsArray();
 
 		requestAnimationFrame(() => {
-			this.update()
+			this.update();
 		});
-  }
-  
+	}
+
 	addElf() {
-		this.elves.push(new Elf());
+		this.elves.push(new Elf(this));
 	}
 
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
 
-	findMouseTile() {
-		return {
-			x: Math.floor(this.mouse.x / 100) * 100,
-			y: Math.floor(this.mouse.y / 100) * 100
-		};
-  }
-
-  updateMousePos(event) {
-    this.mouse.x = event.pageX - this.canvasOffset.top
-    this.mouse.y = event.pageY - this.canvasOffset.left
-  }
-
-	isOccupied() {
-    let tile = this.findMouseTile();
-    return this.weapons.reverse().some((weapon) => weapon.x == tile.x && weapon.y == tile.y);
+	ElfHitsWeapon(elf) {
+		for (var i = 0; i < this.weapons.length; i++) {
+			var wpn = this.weapons[i];
+			if (elf.x + 100 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.selection != wpn) {
+				this.weapons.splice(i, 1); // Remove the enemy that the missile hit
+			}
+		}
+	}
+	updateWeaponsArray() {
+		for (var i = 0; i < this.elves.length; i++) {
+			var elf = this.elves[i];
+			this.ElfHitsWeapon(elf);
+		}
 	}
 }
 
 const game = new Game();
-game.addWeapon(new Weapon(0, 0));
-game.addWeapon(new Weapon(100, 100));
-game.addWeapon(new Weapon(0, 200));
-game.addWeapon(new Weapon(100, 300));
+game.addWeapon(new Weapon(700, 0));
+game.addWeapon(new Weapon(700, 100));
+game.addWeapon(new Weapon(700, 200));
+game.addWeapon(new Weapon(700, 300));
 
 setInterval(() => {
-	game.addElf(document.getElementById('canvas'));
-}, 3000);
+	game.addElf();
+}, 5000);
