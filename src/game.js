@@ -38,10 +38,10 @@ class Game {
 
 	addBullet(bullet, weaponObj) {
         var index = this.weapons.indexOf(weaponObj);
-        console.log(index);
-        console.log(this.weapons);
+        if(index != -1){
         this.weapons[index]["bullets"] = bullet;
-		this.bullets.push(bullet);
+        this.bullets.push(bullet);
+        }
 	}
 
 	addWeapon(weapon) {
