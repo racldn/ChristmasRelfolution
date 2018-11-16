@@ -1,7 +1,6 @@
 class Bullet {
   constructor(center, velocity) { // is passed a horizontal and vertical center for the unit to determine spawn location - should be slightly outside the spawning unit's body
     this.center = center; // consists of this.center.x and this.center.y for horizontal and vertical position on the screen
-    this.radius = 5;
     this.velocity = velocity; // consists of this.velocity.x and this.verlocity.y for movement along the x axis and y axis
     this.currentFrame = 0;
     this.totalFrames = 4;
@@ -16,11 +15,16 @@ class Bullet {
   }
 
   update(ctx) {
+
     if (this.center.x > this.spriteWidth/2) {
+      if(this.center.x == 50){
+        delete this;
+      }else{
       this.center.x += this.velocity.dx;
+      this.draw(ctx);
+      }
     }
     // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
-    this.draw(ctx);
   }
 
   draw(ctx) {
@@ -39,6 +43,6 @@ class Bullet {
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
-    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, (this.center.x - 50), (this.center.y - 50), this.spriteWidth, this.spriteHeight);
+    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.center.x , this.center.y, this.spriteWidth, this.spriteHeight);
   }
 }
