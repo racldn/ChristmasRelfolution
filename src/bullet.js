@@ -11,20 +11,19 @@ class Bullet {
     this.srcX = 0;
     this.srcY = 0;
 
-    this.animTick = 30;
+    this.animTick = 20;
     this.currentAnimTick = 0;
   }
 
-  update(canvas) {
-    if (this.center.x > 0) {
+  update(ctx) {
+    if (this.center.x > this.spriteWidth/2) {
       this.center.x += this.velocity.dx;
     }
     // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
-    this.draw(canvas);
+    this.draw(ctx);
   }
 
-  draw(canvas) {
-    const ctx = canvas.getContext('2d')
+  draw(ctx) {
     let img = new Image();
     img.src = ("./assets/candycane.png")
   
@@ -40,6 +39,6 @@ class Bullet {
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
-    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.center.x, this.center.y, this.spriteWidth, this.spriteHeight);
+    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, (this.center.x - 50), (this.center.y - 50), this.spriteWidth, this.spriteHeight);
   }
 }

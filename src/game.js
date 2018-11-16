@@ -35,6 +35,10 @@ class Game {
 		this.elves.push(new Elf(this));
 	}
 
+	addBullet(bullet) {
+		this.bullets.push(bullet);
+	}
+
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
@@ -47,6 +51,7 @@ class Game {
 			}
 		}
 	}
+	
 	updateWeaponsArray() {
 		for (var i = 0; i < this.elves.length; i++) {
 			var elf = this.elves[i];
@@ -56,10 +61,10 @@ class Game {
 }
 
 const game = new Game();
-game.addWeapon(new Weapon(700, 0));
-game.addWeapon(new Weapon(700, 100));
-game.addWeapon(new Weapon(700, 200));
-game.addWeapon(new Weapon(700, 300));
+game.addWeapon(new Weapon(700, 0, game));
+game.addWeapon(new Weapon(700, 100, game));
+game.addWeapon(new Weapon(700, 200, game));
+game.addWeapon(new Weapon(700, 300, game));
 
 setInterval(() => {
 	game.addElf();
