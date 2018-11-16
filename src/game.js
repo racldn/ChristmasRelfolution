@@ -34,7 +34,7 @@ class Game {
 		requestAnimationFrame(() => {
 			this.update();
         });
-        // console.log(game.bullets);
+        console.log(game.bullets);
 	}
 
 	addElf() {
