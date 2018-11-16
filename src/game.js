@@ -52,8 +52,8 @@ class Game {
 	ElfHitsWeapon(elf) {
 		for (var i = 0; i < this.weapons.length; i++) {
 			var wpn = this.weapons[i];
-			if (elf.x + 100 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.selection != wpn) {
-                this.weapons.splice(i, 1); // Remove the enemy that the missile hi
+			if (elf.x + 50 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.dragDrop.selection != wpn) {
+				this.weapons.splice(i, 1); // Remove the enemy that the missile hit
 			}
 		}
 	}
