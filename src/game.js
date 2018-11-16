@@ -3,9 +3,9 @@ class Game {
 	constructor() {
 		this.canvas = document.getElementById("canvas");
 		this.ctx = this.canvas.getContext("2d");
-		this.elves = [];
-		this.bullets = [];
-		this.weapons = [];
+		this.elves = [];    //current elves
+		this.bullets = [];  //current bullets
+		this.weapons = [];  //current weapons
 
 		this.dragDrop = new DragDrop(this.canvas, this.weapons);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
@@ -36,18 +36,29 @@ class Game {
 	}
 
 	addElf() {
-		this.elves.push(new Elf(this));
-	}
+        const elf = new Elf(this);
+        elf.id = "elf-" + this.elves.length;
+        elf.idx = this.elves.length;
+		this.elves.push(elf);
+    }
+    
+    removeBullet(bullet, weapon){
+        this.bullets.splice(this.bullets.findIndex(b => b.id === bullet.id), 1); // arrow is short form of `this.bullets.findIndex(function(b){ return b.id === bullet.id})`
+    }
 
 	addBullet(bullet, weaponObj) {
         var index = this.weapons.indexOf(weaponObj);
         if(index != -1){
             this.weapons[index]["bullets"] = bullet;
+            bullet.id = "bullet-" + this.bullets.length;
+            bullet.idx = this.bullets.length;
             this.bullets.push(bullet);
         }
 	}
 
 	addWeapon(weapon) {
+        weapon.id = "weapon-" + this.weapons.length;
+        weapon.idx = this.weapons.length;
 		this.weapons.push(weapon);
 	}
   

@@ -15,7 +15,7 @@ class Weapon {
       y: this.y
     };
     this.game = game;
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.callBullet();
     }, 2000);
   }
@@ -23,6 +23,11 @@ class Weapon {
     let img = new Image();
     img.src = ('./assets/gbm.png');
     ctx.drawImage(img, this.x, this.y);
+  }
+
+  removeBullet(bullet){
+    this.game.removeBullet(bullet, this);
+    // clearInterval(this.timer);
   }
 
   
@@ -33,7 +38,7 @@ class Weapon {
     let bullet = new Bullet(Object.assign({}, this.lastPosition), {
       dx: -3,
       dy: 0
-    });
+    }, this);
     this.game.addBullet(bullet, this);
   }
   update(ctx) {
