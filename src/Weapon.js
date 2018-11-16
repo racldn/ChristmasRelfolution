@@ -4,8 +4,8 @@ class Weapon {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = y;
-    this.w = 80;
-    this.h = 80;
+    this.w = 100;
+    this.h = 100;
     this.center = {
       x: (x - 50),
       y: (y + 50)
