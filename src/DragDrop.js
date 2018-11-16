@@ -39,8 +39,13 @@ class DragDrop {
       } else {
         let tile = this.findTile();
         this.dragging = false;
-        this.selection.x = tile.x;
-        this.selection.y = tile.y;
+        if (tile.x < 100) {
+          this.selection.x = tile.x + 100;
+          this.selection.y = tile.y;
+        } else {
+          this.selection.x = tile.x;
+          this.selection.y = tile.y;
+        }
         this.selection.lastPosition = {
           x: this.selection.x,
           y: this.selection.y
