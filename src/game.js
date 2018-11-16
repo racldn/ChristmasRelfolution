@@ -39,8 +39,8 @@ class Game {
 	addBullet(bullet, weaponObj) {
         var index = this.weapons.indexOf(weaponObj);
         if(index != -1){
-        this.weapons[index]["bullets"] = bullet;
-        this.bullets.push(bullet);
+            this.weapons[index]["bullets"] = bullet;
+            this.bullets.push(bullet);
         }
 	}
 
@@ -54,7 +54,6 @@ class Game {
 			var wpn = this.weapons[i];
 			if (elf.x + 100 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.selection != wpn) {
                 this.weapons.splice(i, 1); // Remove the enemy that the missile hi
-                //delete this.weapons[i]["bullets"];
 			}
 		}
 	}

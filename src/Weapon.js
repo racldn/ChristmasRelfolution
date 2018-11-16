@@ -17,7 +17,7 @@ class Weapon {
     this.game = game;
     setInterval(() => {
       this.callBullet();
-    }, 3000);
+    }, 2000);
   }
   draw(ctx) {
     let img = new Image();

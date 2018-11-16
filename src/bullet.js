@@ -15,11 +15,16 @@ class Bullet {
   }
 
   update(ctx) {
+
     if (this.center.x > this.spriteWidth/2) {
+      if(this.center.x == 50){
+        delete this;
+      }else{
       this.center.x += this.velocity.dx;
+      this.draw(ctx);
+      }
     }
     // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
-    this.draw(ctx);
   }
 
   draw(ctx) {
