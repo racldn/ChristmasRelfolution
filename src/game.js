@@ -1,3 +1,4 @@
+
 class Game {
 	constructor() {
 		this.canvas = document.getElementById("canvas");
@@ -38,14 +39,18 @@ class Game {
 		this.elves.push(new Elf(this));
 	}
 
-	addBullet(bullet) {
-		this.bullets.push(bullet);
+	addBullet(bullet, weaponObj) {
+        var index = this.weapons.indexOf(weaponObj);
+        if(index != -1){
+            this.weapons[index]["bullets"] = bullet;
+            this.bullets.push(bullet);
+        }
 	}
 
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
-
+  
 	ElfHitsWeapon(elf, elfSound) { // passing it elfSound so it can play it before deleting the GBM from the screen
 		for (var i = 0; i < this.weapons.length; i++) {
 			var wpn = this.weapons[i];
