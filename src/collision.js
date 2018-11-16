@@ -1,19 +1,13 @@
 class Collision {
 
   elfIsHitByBullet(elf, bullet) {
-
     elf.center.x + 50 >= bullet.center.x - 50
   }
 
   WeaponIsHitByElf(elf, weapon) {
-
     elf.centre.x + 50 >= weapon.center.x - 50
-
   }
-
   // collisions detection in here. update function in game class - 
-
-
   bulletHitsElf(bullet, bulletIndex) { //passing in the bullet and its position within the bullet array
     for(var i = 0; i < elves.length; ++i){ //iterate through the elves array
       if (elfIsHitByBullet){
