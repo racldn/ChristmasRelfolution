@@ -27,6 +27,10 @@ class Weapon {
     ctx.drawImage(img, this.x, this.y);
   }
 
+  removeBullet(bullet){
+    this.game.removeBullet(bullet, this);
+  }
+
   callBullet() {
     // Object.assign creates copy of this.center 
     //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
@@ -34,7 +38,7 @@ class Weapon {
     let bullet = new Bullet(Object.assign({}, this.lastPosition), {
       dx: -3,
       dy: 0
-    }, this.game);
+    }, this);
     
     this.game.addBullet(bullet);
   }
