@@ -3,15 +3,15 @@ class Game {
 	constructor() {
 		this.canvas = document.getElementById("canvas");
 		this.ctx = this.canvas.getContext("2d");
-		this.elves = [];    //current elves
-		this.bullets = [];  //current bullets
-		this.weapons = [];  //current weapons
+		this.elves = [];
+		this.bullets = [];
+		this.weapons = [];
 
 		this.dragDrop = new DragDrop(this.canvas, this.weapons);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
-
-
+        this.elementCounter = 0;    //counter to maintain all drawn elements
+   
 		this.update();
 	}
 
@@ -37,28 +37,21 @@ class Game {
 
 	addElf() {
         const elf = new Elf(this);
-        elf.id = "elf-" + this.elves.length;
-        elf.idx = this.elves.length;
+        elf.id = "elf-" + this.elementCounter++; // this creates unique id for each elf (Which means it is easy to remove perticular elf)
 		this.elves.push(elf);
     }
     
-    removeBullet(bullet, weapon){
+    removeBullet(bullet){
         this.bullets.splice(this.bullets.findIndex(b => b.id === bullet.id), 1); // arrow is short form of `this.bullets.findIndex(function(b){ return b.id === bullet.id})`
     }
 
-	addBullet(bullet, weaponObj) {
-        var index = this.weapons.indexOf(weaponObj);
-        if(index != -1){
-            this.weapons[index]["bullets"] = bullet;
-            bullet.id = "bullet-" + this.bullets.length;
-            bullet.idx = this.bullets.length;
-            this.bullets.push(bullet);
-        }
+	addBullet(bullet) {
+        bullet.id = "bullet-" + this.elementCounter++; // this creates unique id for each bullet(Which means it is easy to remove perticular bullet)
+        this.bullets.push(bullet);
 	}
 
 	addWeapon(weapon) {
-        weapon.id = "weapon-" + this.weapons.length;
-        weapon.idx = this.weapons.length;
+        weapon.id = "weapon-" + this.elementCounter++; // same as above unique ids
 		this.weapons.push(weapon);
 	}
   
@@ -67,7 +60,8 @@ class Game {
 			var wpn = this.weapons[i];
 			if (elf.x + 50 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.dragDrop.selection != wpn) {
 				this.elfSound.play();
-				this.GBMSound.play();
+                this.GBMSound.play();
+                clearTimeout(wpn.timer); // clears the timer of weapon
 				this.weapons.splice(i, 1); // Remove the enemy that the missile hit
 			}
 		}

@@ -15,8 +15,10 @@ class Weapon {
       y: this.y
     };
     this.game = game;
-    this.timer = setInterval(() => {
-      this.callBullet();
+    const self = this;
+    this.timer = setTimeout(function tick(){  //this works similar to setInterval, recursively calls setTimeout(which resets timer after 2000 secs)
+      self.callBullet();
+      self.timer = setTimeout(tick, 2000);
     }, 2000);
   }
   draw(ctx) {
@@ -27,7 +29,6 @@ class Weapon {
 
   removeBullet(bullet){
     this.game.removeBullet(bullet, this);
-    // clearInterval(this.timer);
   }
 
   
