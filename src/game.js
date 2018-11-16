@@ -1,3 +1,4 @@
+
 class Game {
 	constructor() {
 		this.canvas = document.getElementById("canvas");
@@ -35,7 +36,11 @@ class Game {
 		this.elves.push(new Elf(this));
 	}
 
-	addBullet(bullet) {
+	addBullet(bullet, weaponObj) {
+        var index = this.weapons.indexOf(weaponObj);
+        console.log(index);
+        console.log(this.weapons);
+        this.weapons[index]["bullets"] = bullet;
 		this.bullets.push(bullet);
 	}
 
@@ -43,11 +48,13 @@ class Game {
 		this.weapons.push(weapon);
 	}
 
+
 	ElfHitsWeapon(elf) {
 		for (var i = 0; i < this.weapons.length; i++) {
 			var wpn = this.weapons[i];
 			if (elf.x + 100 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.selection != wpn) {
-				this.weapons.splice(i, 1); // Remove the enemy that the missile hit
+                this.weapons.splice(i, 1); // Remove the enemy that the missile hi
+                //delete this.weapons[i]["bullets"];
 			}
 		}
 	}

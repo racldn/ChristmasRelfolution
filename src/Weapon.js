@@ -25,6 +25,7 @@ class Weapon {
     ctx.drawImage(img, this.x, this.y);
   }
 
+  
   callBullet() {
     // Object.assign creates copy of this.center 
     //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
@@ -33,7 +34,7 @@ class Weapon {
       dx: -3,
       dy: 0
     });
-    this.game.addBullet(bullet);
+    this.game.addBullet(bullet, this);
   }
   update(ctx) {
     this.draw(ctx);
