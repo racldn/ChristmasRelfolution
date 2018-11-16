@@ -6,7 +6,7 @@ class Game {
 		this.bullets = [];
 		this.weapons = [];
 
-		this.dragDrop = new DragDrop(this.canvas, this.weapons);;
+		this.dragDrop = new DragDrop(this.canvas, this.weapons);
 
 		this.update();
 	}
