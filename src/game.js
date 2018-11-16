@@ -23,11 +23,12 @@ class Game {
 		});
 		this.weapons.forEach((weapon) => {
 			weapon.update(this.ctx);
-		});
+        });
+    
 		this.bullets.forEach((bullet) => {
 			bullet.update(this.ctx);
-		});
-
+        });
+        
 		this.updateWeaponsArray();
 
 		requestAnimationFrame(() => {
