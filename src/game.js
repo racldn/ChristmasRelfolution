@@ -8,6 +8,9 @@ class Game {
 		this.weapons = [];
 
 		this.dragDrop = new DragDrop(this.canvas, this.weapons);
+		this.elfSound = new Sound("assets/audio/elfChomp.wav");
+		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
+
 
 		this.update();
 	}
@@ -47,12 +50,13 @@ class Game {
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
-
-
-	ElfHitsWeapon(elf) {
+  
+	ElfHitsWeapon(elf, elfSound) { // passing it elfSound so it can play it before deleting the GBM from the screen
 		for (var i = 0; i < this.weapons.length; i++) {
 			var wpn = this.weapons[i];
 			if (elf.x + 50 >= wpn.x && elf.x <= wpn.x + wpn.w && elf.y >= wpn.y && elf.y <= wpn.y + wpn.h && this.dragDrop.selection != wpn) {
+				this.elfSound.play();
+				this.GBMSound.play();
 				this.weapons.splice(i, 1); // Remove the enemy that the missile hit
 			}
 		}
