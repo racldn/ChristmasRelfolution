@@ -72,4 +72,4 @@ class DragDrop {
     let mouseY = Math.floor(this.mouse.y / 100) * 100;
     return this.weapons.reverse().some((weapon) => weapon.x == mouseX && weapon.y == mouseY);
   }
-}
+}  
