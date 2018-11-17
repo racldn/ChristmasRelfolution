@@ -28,7 +28,7 @@ class Weapon {
   }
 
   removeBullet(bullet){
-    this.game.removeBullet(bullet, this);
+    this.game.removeBullet(bullet);
   }
 
   callBullet() {
