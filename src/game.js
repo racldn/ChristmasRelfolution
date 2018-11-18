@@ -34,29 +34,28 @@ class Game {
 		requestAnimationFrame(() => {
 			this.update();
         });
-        console.log(this.bullets);
 	}
 
 	addElf(elf) {
         // const elf = new Elf(this);
         elf.id = "elf-" + this.elementCounter++; // this creates unique id for each elf (Which means it is easy to remove perticular elf)
 		this.elves.push(elf);
-    }
-    
-    removeBullet(bullet){
-        this.bullets.splice(this.bullets.findIndex(b => b.id === bullet.id), 1); // arrow is short form of `this.bullets.findIndex(function(b){ return b.id === bullet.id})`
-    }
-
-	addBullet(bullet) {
-        bullet.id = "bullet-" + this.elementCounter++; // this creates unique id for each bullet(Which means it is easy to remove perticular bullet)
-        this.bullets.push(bullet);
 	}
 
 	addWeapon(weapon) {
         weapon.id = "weapon-" + this.elementCounter++; // same as above unique ids
 		this.weapons.push(weapon);
 	}
-  
+	
+	addBullet(bullet) {
+        bullet.id = "bullet-" + this.elementCounter++; // this creates unique id for each bullet(Which means it is easy to remove perticular bullet)
+        this.bullets.push(bullet);
+	}
+    
+    removeBullet(bullet){
+        this.bullets.splice(this.bullets.findIndex(b => b.id === bullet.id), 1); // arrow is short form of `this.bullets.findIndex(function(b){ return b.id === bullet.id})`
+	}
+	
 	ElfHitsWeapon(elf, elfSound) { // passing it elfSound so it can play it before deleting the GBM from the screen
 		for (var i = 0; i < this.weapons.length; i++) {
 			var wpn = this.weapons[i];
