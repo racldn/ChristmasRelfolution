@@ -16,7 +16,7 @@ class Weapon {
       y: this.y
     };
     
-    const self = this;
+    const self = this; // here `this` refres to weapon (bcz inside setTimer this refers to `window`)
     this.timer = setTimeout(function tick(){  //this works similar to setInterval, recursively calls setTimeout(which resets timer after 2000 secs)
       self.callBullet();
       self.timer = setTimeout(tick, 2000);
