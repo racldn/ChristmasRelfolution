@@ -21,6 +21,7 @@ class Game {
 		this.elves.forEach((elf) => {
 			elf.update(this.ctx);
 		});
+		
 		this.weapons.forEach((weapon) => {
 			weapon.update(this.ctx);
         });

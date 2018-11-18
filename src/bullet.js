@@ -9,7 +9,6 @@ class Bullet {
     this.spriteWidth = 400 / 4;
     this.srcX = 0;
     this.srcY = 0;
-
     this.animTick = 20;
     this.currentAnimTick = 0;
 
