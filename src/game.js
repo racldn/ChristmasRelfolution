@@ -1,7 +1,7 @@
 
 class Game {
-	constructor() {
-		this.canvas = document.getElementById("canvas");
+	constructor(canvas) {
+		this.canvas = canvas;
 		this.ctx = this.canvas.getContext("2d");
 		this.elves = [];
 		this.bullets = [];
@@ -37,8 +37,8 @@ class Game {
         console.log(this.bullets);
 	}
 
-	addElf() {
-        const elf = new Elf(this);
+	addElf(elf) {
+        // const elf = new Elf(this);
         elf.id = "elf-" + this.elementCounter++; // this creates unique id for each elf (Which means it is easy to remove perticular elf)
 		this.elves.push(elf);
     }
@@ -76,13 +76,3 @@ class Game {
 		}
 	}
 }
-
-const game = new Game();
-game.addWeapon(new Weapon(700, 0, game));
-game.addWeapon(new Weapon(700, 100, game));
-game.addWeapon(new Weapon(700, 200, game));
-game.addWeapon(new Weapon(700, 300, game));
-
-setInterval(() => {
-	game.addElf();
-}, 5000);
