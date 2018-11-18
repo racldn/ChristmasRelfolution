@@ -1,4 +1,3 @@
-
 class Game {
 	constructor() {
 		this.canvas = document.getElementById("canvas");
@@ -10,7 +9,6 @@ class Game {
 		this.dragDrop = new DragDrop(this.canvas, this.weapons);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
-
 
 		this.update();
 	}
@@ -69,13 +67,3 @@ class Game {
 		}
 	}
 }
-
-const game = new Game();
-game.addWeapon(new Weapon(700, 0, game));
-game.addWeapon(new Weapon(700, 100, game));
-game.addWeapon(new Weapon(700, 200, game));
-game.addWeapon(new Weapon(700, 300, game));
-
-setInterval(() => {
-	game.addElf();
-}, 5000);
