@@ -1,7 +1,8 @@
 class Weapon {
   constructor(x, y, game) {
-    this.canvas = document.getElementById("canvas");
-    this.ctx = this.canvas.getContext("2d");
+    // this.canvas = document.getElementById("canvas");
+    // this.ctx = this.canvas.getContext("2d");
+    this.game = game;
     this.x = x;
     this.y = y;
     this.w = 100;
@@ -14,8 +15,8 @@ class Weapon {
       x: this.x,
       y: this.y
     };
-    this.game = game;
-    const self = this;
+    
+    const self = this; // here `this` refres to weapon (bcz inside setTimer this refers to `window`)
     this.timer = setTimeout(function tick(){  //this works similar to setInterval, recursively calls setTimeout(which resets timer after 2000 secs)
       self.callBullet();
       self.timer = setTimeout(tick, 2000);
@@ -25,6 +26,10 @@ class Weapon {
     let img = new Image();
     img.src = ('./assets/gbm.png');
     ctx.drawImage(img, this.x, this.y);
+  }
+
+  update(ctx) {
+    this.draw(ctx);
   }
 
   removeBullet(bullet){
@@ -42,10 +47,7 @@ class Weapon {
     
     this.game.addBullet(bullet);
   }
-  update(ctx) {
-    this.draw(ctx);
-  }
-
+  
   contains(mx, my) {
     return (this.x <= mx) && (this.x + this.w >= mx) &&
       (this.y <= my) && (this.y + this.h >= my);
