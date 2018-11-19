@@ -17,17 +17,17 @@ class Weapon {
 
     this.isActive = true;
   }
-  draw() {
+  draw(ctx) {
     let img = new Image();
     img.src = ('./assets/gbm.png');
-    this.game.ctx.drawImage(img, this.x, this.y);
+    ctx.drawImage(img, this.x, this.y);
   }
 
   fire() {
     this.game.addBullet(new Bullet(this.x - 50, this.y, this.game));
   }
 
-  update() {
+  update(ctx) {
     if(this.isActive) {
       if(this.currentFire >= this.fireRate) {
         this.fire();
@@ -38,7 +38,7 @@ class Weapon {
     } else {
       this.currentFire = 0;
     }
-    this.draw();
+    this.draw(ctx);
   }
 
   contains(mx, my) {

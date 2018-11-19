@@ -34,8 +34,9 @@ class Game {
 		});
 	}
 
-	addElf() {
-		this.elves.push(new Elf(this));
+	addElf(elf) {
+		// const elf = new Elf(this);
+		this.elves.push(elf);
 	}
 
 	addBullet(bullet) {
