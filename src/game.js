@@ -1,6 +1,6 @@
 class Game {
-	constructor() {
-		this.canvas = document.getElementById("canvas");
+	constructor(canvas) {
+		this.canvas = canvas;
 		this.ctx = this.canvas.getContext("2d");
 		this.elves = [];
 		this.bullets = [];
