@@ -1,11 +1,1 @@
 <?php include_once("index.html"); ?>
-<?php include_once("./src/collision.js"); ?>
-<?php include_once("./src/dragDrop.js"); ?>
-<?php include_once("./src/snow.js"); ?>
-<?php include_once("./src/game.js"); ?>
-<?php include_once("./src/weapon.js"); ?>
-<?php include_once("./src/gridCreation.js"); ?>
-<?php include_once("./src/bullet.js"); ?>
-<?php include_once("./src/elf.js"); ?>
-<?php include_once("./src/button.js"); ?>
-<?php include_once("./src/app.js"); ?>
