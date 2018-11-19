@@ -40,14 +40,14 @@ describe("Game", function(){
     });
   });
 
-   describe("addElf", function() {
+  describe("addElf", function() {
     it("should add elf in elves array(game.elves)", function(){
       game.addElf(elf);
       expect(game.elves).toContain(elf);
     });
   });
 
-   describe("addWeapon", function() {
+  describe("addWeapon", function() {
     it("should add weapon in weapons array", function(){
       game.addWeapon(weapon);
       expect(game.weapons).toContain(weapon);
