@@ -10,7 +10,6 @@ describe("Weapon", function(){
         return ctx;
       }
     });
-    bullet = jasmine.createSpyObj('bullet',['draw','update']);
     weapon = new Weapon(x, y, game);
   });
 
