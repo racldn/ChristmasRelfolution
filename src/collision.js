@@ -18,5 +18,9 @@ collision = {
 				game.bullets.splice(game.bullets.indexOf(bullet), 1);
 			}
 		});
+	},
+
+	elfHitsRightWall: (elf, game) => {
+		if (elf.x > 750) game.inGame = false;
 	}
 }

@@ -28,7 +28,9 @@ function startGame() {
   game.addWeapon(new Weapon(700, 300, game));
 
   setInterval(() => {
-    game.addElf();
+    if (game.inGame) {
+      game.addElf();
+    }
   }, 5000);
 }
 
