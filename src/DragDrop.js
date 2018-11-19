@@ -13,6 +13,9 @@ class DragDrop {
 
   init() {
     this.canvas.addEventListener('mousedown', (e) => {
+      if(this.selection) {
+        this.restoreLastPosition()
+      }
       this.weapons.reverse().some((weapon) => {
         if (weapon.contains(this.mouse.x, this.mouse.y)) {
           this.dragOffsetX = this.mouse.x - weapon.x;
@@ -34,8 +37,7 @@ class DragDrop {
 
     this.canvas.addEventListener('mouseup', (event) => {
       if (this.isOccupied(this.mouse, this.weapons)) {
-        this.selection.x = this.selection.lastPosition.x;
-        this.selection.y = this.selection.lastPosition.y;
+        this.restoreLastPosition()
         this.dragging = false;
       } else {
         let tile = this.findTile();
@@ -74,4 +76,9 @@ class DragDrop {
     let mouseY = Math.floor(this.mouse.y / 100) * 100;
     return this.weapons.reverse().some((weapon) => weapon.x == mouseX && weapon.y == mouseY);
   }
+
+  restoreLastPosition() {
+    this.selection.x = this.selection.lastPosition.x;
+    this.selection.y = this.selection.lastPosition.y;
+  };
 }  
