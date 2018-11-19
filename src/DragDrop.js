@@ -19,8 +19,9 @@ class DragDrop {
           this.dragOffsetY = this.mouse.y - weapon.y;
           this.dragging = true;
           this.selection = weapon;
+          this.selection.isActive = false;
         }
-      })
+      });
     }, true);
 
     this.canvas.addEventListener('mousemove', (event) => {
@@ -51,6 +52,7 @@ class DragDrop {
           y: this.selection.y
         }
       }
+      this.selection.isActive = true;
       this.selection = null;
     }, true);
   }
