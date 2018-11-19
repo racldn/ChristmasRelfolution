@@ -7,6 +7,8 @@ class Bullet {
     this.x = x;
     this.y = y;
 
+    this.attackPower = 1;
+
     this.speed = 3;
     
     this.spriteHeight = 100;
