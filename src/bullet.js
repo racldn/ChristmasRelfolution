@@ -1,9 +1,13 @@
 class Bullet {
-  constructor(center, velocity) { // is passed a horizontal and vertical center for the unit to determine spawn location - should be slightly outside the spawning unit's body
-    this.center = center; // consists of this.center.x and this.center.y for horizontal and vertical position on the screen
-    this.velocity = velocity; // consists of this.velocity.x and this.verlocity.y for movement along the x axis and y axis
+  constructor(x, y, game) { // is passed a horizontal and vertical center for the unit to determine spawn location - should be slightly outside the spawning unit's body  
+    this.game = game;  
     this.currentFrame = 0;
     this.totalFrames = 4;
+
+    this.x = x;
+    this.y = y;
+
+    this.speed = 3;
     
     this.spriteHeight = 100;
     this.spriteWidth = 400 / 4;
@@ -14,20 +18,12 @@ class Bullet {
     this.currentAnimTick = 0;
   }
 
-  update(ctx) {
-
-    if (this.center.x > this.spriteWidth/2) {
-      if(this.center.x == 50){
-        delete this;
-      }else{
-      this.center.x += this.velocity.dx;
-      this.draw(ctx);
-      }
-    }
-    // this.center.y += this.velocity.dy // not needed because our items only move along the x axis - adjusts vertical position of center by incrementing current vertical center position by vertical velocity
+  update() {
+    this.x -= this.speed;
+    this.draw();
   }
 
-  draw(ctx) {
+  draw() {
     let img = new Image();
     img.src = ("./assets/candycane.png")
   
@@ -43,6 +39,6 @@ class Bullet {
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
-    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.center.x , this.center.y, this.spriteWidth, this.spriteHeight);
+    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x , this.y, this.spriteWidth, this.spriteHeight);
   }
 }

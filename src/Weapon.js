@@ -1,43 +1,44 @@
 class Weapon {
   constructor(x, y, game) {
-    this.canvas = document.getElementById("canvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.game = game;
+
     this.x = x;
     this.y = y;
     this.w = 100;
     this.h = 100;
-    this.center = {
-      x: (x - 50),
-      y: (y + 50)
-    };
+
     this.lastPosition = {
       x: this.x,
       y: this.y
     };
-    this.game = game;
-    setInterval(() => {
-      this.callBullet();
-    }, 2000);
+
+    this.fireRate = 120; // 60 refreshes = 1s roughly
+    this.currentFire = 0;
+
+    this.isActive = true;
   }
-  draw(ctx) {
+  draw() {
     let img = new Image();
     img.src = ('./assets/gbm.png');
-    ctx.drawImage(img, this.x, this.y);
+    this.game.ctx.drawImage(img, this.x, this.y);
   }
 
-  
-  callBullet() {
-    // Object.assign creates copy of this.center 
-    //( Since this.center is an object, it is passed as call by reference to the Bullet constructor. 
-    // By calling Object.assign on this.center, we're creating a copy that is passed to the constructor.)
-    let bullet = new Bullet(Object.assign({}, this.lastPosition), {
-      dx: -3,
-      dy: 0
-    });
-    this.game.addBullet(bullet, this);
+  fire() {
+    this.game.addBullet(new Bullet(this.x - 50, this.y, this.game));
   }
-  update(ctx) {
-    this.draw(ctx);
+
+  update() {
+    if(this.isActive) {
+      if(this.currentFire >= this.fireRate) {
+        this.fire();
+        this.currentFire = 0;
+      } else {
+        this.currentFire++;
+      }
+    } else {
+      this.currentFire = 0;
+    }
+    this.draw();
   }
 
   contains(mx, my) {
