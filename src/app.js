@@ -2,7 +2,9 @@ const canvas = document.getElementById("canvas-grid");
 const ctx = canvas.getContext("2d");
 var mouseX = 0;
 var mouseY = 0;
-var btnPlay = new Button(417, 559, 171, 228)
+var btnPlay = new Button(417, 559, 171, 228);
+
+
 
 window.onload = function() {
   loadMenu(ctx)
@@ -22,10 +24,12 @@ function startGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   var game = new Game();
   createGrid()
-  game.addWeapon(new Weapon(700, 0, game));
-  game.addWeapon(new Weapon(700, 100, game));
-  game.addWeapon(new Weapon(700, 200, game));
-  game.addWeapon(new Weapon(700, 300, game));
+  //game.addWeapon(new Weapon(100, 0, game));
+  // game.addWeapon(new Weapon(200, 0, game));
+  // game.addWeapon(new Weapon(300, 0, game));
+  
+  
+  //game.addWeapon(new Weapon(700, 300, game));
 
   setInterval(() => {
     game.addElf();
@@ -39,3 +43,13 @@ function playBtnClicked(e) {
     startGame()
   };
 }
+
+
+
+
+
+  // Control that click event occurred within position of button
+  // NOTE: This assumes canvas element is positioned at top left corner 
+  
+    // Executes if button was clicked!
+ 

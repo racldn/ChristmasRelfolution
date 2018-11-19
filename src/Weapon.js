@@ -15,7 +15,7 @@ class Weapon {
     this.fireRate = 120; // 60 refreshes = 1s roughly
     this.currentFire = 0;
 
-    this.isActive = true;
+    this.isActive = false;
   }
   draw() {
     let img = new Image();
