@@ -15,7 +15,7 @@ collision = {
 
 	elfHitsBullet: (elf, game) => {
 		game.bullets.forEach((bullet) => {
-			if(elf.x + elf.spriteWidth >= bullet.x && elf.x <= bullet.x && elf.y == bullet.y) {
+			if(elf.x + elf.spriteWidth >= bullet.x + 50 && elf.x <= bullet.x + 50 && elf.y == bullet.y) {
 				game.elfUh.play();
 				game.bulletHit.play();
 				game.elves.splice(game.elves.indexOf(elf), 1);
