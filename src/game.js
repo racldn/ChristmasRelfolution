@@ -5,6 +5,7 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this.canvas, this.weapons);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
@@ -43,8 +44,8 @@ class Game {
 			this.ctx.fill();
 
 			this.ctx.fillStyle = 'white'
-			this.ctx.font = "100px Arial";
-			this.ctx.fillText("You lose!", 400, 300);
+			this.ctx.font = "20px Arial";
+			this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);
 		}
 	}
 

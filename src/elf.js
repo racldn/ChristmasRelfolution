@@ -3,7 +3,7 @@ class Elf {
     this.game = game;
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
-    this.dx = 1;
+    this.dx = 7;
 
     this.currentFrame = 0;
     this.totalFrames = 2;

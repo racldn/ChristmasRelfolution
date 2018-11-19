@@ -16,6 +16,7 @@ collision = {
 			if(elf.x + elf.spriteWidth >= bullet.x && elf.x <= bullet.x && elf.y == bullet.y) {
 				game.elves.splice(game.elves.indexOf(elf), 1);
 				game.bullets.splice(game.bullets.indexOf(bullet), 1);
+				game.score++;
 			}
 		});
 	},
