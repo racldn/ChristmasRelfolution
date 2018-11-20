@@ -72,3 +72,4 @@ class Weapon {
       (this.y <= my) && (this.y + this.h >= my);
   }
 }
+// fix me

@@ -77,12 +77,12 @@ Front end testing was carried out manually by the users after developing each ne
 
 ## Authors
 
-[Shweta Patil](https://github.com/shwetzpatil)
-[Chloe Mingay](https://github.com/ChloeHelen)
-[Nathan Quayle](https://github.com/NathanQuayle)
-[Nazziya Kadri](https://github.com/nazzkadri)
-[Freya Becker](https://github.com/fbl11)
-[Robbie Campbell](https://github.com/racldn)
+* [Shweta Patil](https://github.com/shwetzpatil)
+* [Chloe Mingay](https://github.com/ChloeHelen)
+* [Nathan Quayle](https://github.com/NathanQuayle)
+* [Nazziya Kadri](https://github.com/nazzkadri)
+* [Freya Becker](https://github.com/fbl11)
+* [Robbie Campbell](https://github.com/racldn)
 
 ## Acknowledgments
 Thank you to Plants Vs Zombies for the inspiration (https://www.ea.com/studios/popcap/plants-vs-zombies)
