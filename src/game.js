@@ -16,16 +16,17 @@ class Game {
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.elfSound = new Sound("assets/audio/elfChomp.wav");
-		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
-		this.bulletHit = new Sound("assets/audio/BulletHit.mp3")
-		this.elfUh = new Sound("assets/audio/elfUh.wav")
+		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);
+		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3", .7)
+		this.bulletHit = new Sound("assets/audio/BulletHit.mp3", .7)
+		this.elfUh = new Sound("assets/audio/elfUh.wav", .7)
+		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
 
 		this.update();
 	}
 
-
 	update() {
+		this.music.play();
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -52,15 +53,7 @@ class Game {
 				this.update();
 			});
 		} else {
-			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-			this.ctx.beginPath()
-			this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-			this.ctx.fillStyle = 'pink'
-			this.ctx.fill();
-			this.ctx.fillStyle = 'white'
-			this.ctx.font = "20px Arial";
-			this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);
+			this.endGame()
 		}
 	}
 
@@ -70,7 +63,6 @@ class Game {
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
 		}
-
 	}
 
 	addToolbarElements(imgSrc) {
@@ -85,4 +77,16 @@ class Game {
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
+	
+	endGame() {
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.beginPath()
+		this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.fillStyle = 'pink'
+		this.ctx.fill();
+		this.ctx.fillStyle = 'white'
+		this.ctx.font = "20px Arial";
+		this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);
+		this.music.stop();
+	};
 }
