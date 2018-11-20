@@ -25,12 +25,12 @@ collision = {
         	game.elfUh.play();
 				game.bulletHit.play();
 				elf.hitpoints -= bullet.attackPower;
+				elf.opacity -= elf.opacity / 3;
 				game.bullets.splice(game.bullets.indexOf(bullet), 1);
 				if(elf.hitpoints <= 0) {
 					game.elves.splice(game.elves.indexOf(elf), 1);
 					game.score++;
 				} 
-
 			}
 		});
 	},

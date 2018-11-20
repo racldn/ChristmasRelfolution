@@ -56,8 +56,13 @@ class Game {
 		}
 	}
 
-	addElf(elf) {
-		this.elves.push(elf);
+	addElf() {
+		if(Math.floor(Math.random() * 5) < 4) {
+			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 3));
+		} else {
+			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
+		}
+
 	}
 
 	addBullet(bullet) {
