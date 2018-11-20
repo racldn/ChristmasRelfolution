@@ -79,7 +79,11 @@ class Game {
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
 	}
-	
+
+	addObstacle() {
+		this.weapons.push(new Obstacle(100, 100, this));
+	}
+
 	endGame() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.beginPath()
