@@ -7,8 +7,6 @@ class Button {
   }
 
   isClicked(mouseX, mouseY) {
-    if (mouseX >= this.xLeft && mouseX <= this.xRight && mouseY >= this.yTop && mouseY <= this.yBottom) {
-      return true;
-    }else{ return false;}
+    return (mouseX >= this.xLeft && mouseX <= this.xRight && mouseY >= this.yTop && mouseY <= this.yBottom)
   }
 }
