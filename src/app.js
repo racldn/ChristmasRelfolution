@@ -22,10 +22,15 @@ function loadMenu(ctx) {
 }
 
 function startGame() {
-  const ctx = canvasGrid.getContext("2d");
+  let ctx = canvasGrid.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   let game = new Game(canvas);
+  // let img = new Image();
+  // img.src = ("./assets/bg_main.jpg");
+  // img.onload = function () {
+  //   ctx.drawImage(img, 0, 0, 800, 600, 0, 0, 800, 600)
+  // }  
   createGrid()
   game.addWeapon(new Weapon(700, 0, game));
   game.addWeapon(new Weapon(700, 100, game));

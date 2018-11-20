@@ -15,7 +15,7 @@ class Game {
 
 		let img = new Image();
 		img.src = ("./assets/bg_main.jpg");
-		img.onload = function () {
+		img.onload = () => {
 			this.ctx.drawImage(img, 0, 0, 800, 600, 0, 0, 800, 600)
 		}  
 		this.update();
