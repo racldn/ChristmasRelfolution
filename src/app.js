@@ -28,12 +28,6 @@ function startGame() {
   let game = new Game(canvas);
  
   setBG('bg_main.jpg')
-  // createGrid()
-
-  game.addWeapon(new Weapon(700, 0, game));
-  game.addWeapon(new Weapon(700, 100, game));
-  game.addWeapon(new Weapon(700, 200, game));
-  game.addWeapon(new Weapon(700, 300, game));
 
   setInterval(() => {
     if (game.inGame) {
