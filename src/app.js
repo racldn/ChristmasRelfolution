@@ -25,7 +25,7 @@ function startGame() {
   const ctx = canvasGrid.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  var game = new Game(canvas);
+  let game = new Game(canvas);
   createGrid()
   game.addWeapon(new Weapon(700, 0, game));
   game.addWeapon(new Weapon(700, 100, game));
@@ -34,7 +34,7 @@ function startGame() {
 
   setInterval(() => {
     if (game.inGame) {
-      game.addElf();
+      game.addElf(new Elf(game));
     }
 
   }, 5000);

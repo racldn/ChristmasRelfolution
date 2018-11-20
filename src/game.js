@@ -16,7 +16,7 @@ class Game {
 		let img = new Image();
 		img.src = ("./assets/bg_main.jpg");
 		img.onload = function () {
-			ctx.drawImage(img, 0, 0, 800, 600, 0, 0, 800, 600)
+			this.ctx.drawImage(img, 0, 0, 800, 600, 0, 0, 800, 600)
 		}  
 		this.update();
 	}
@@ -26,14 +26,14 @@ class Game {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 			this.weapons.forEach((weapon) => {
-				weapon.update();
+				weapon.update(this.ctx);
 			});
 			this.bullets.forEach((bullet) => {
-				bullet.update();
+				bullet.update(this.ctx);
 				collision.bulletHitsSide(bullet, this);
 			});
 			this.elves.forEach((elf) => {
-				elf.update();
+				elf.update(this.ctx);
 				collision.elfHitsRightWall(elf, this);
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
@@ -57,7 +57,6 @@ class Game {
 	}
 
 	addElf(elf) {
-		// const elf = new Elf(this);
 		this.elves.push(elf);
 	}
 
