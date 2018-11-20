@@ -12,7 +12,7 @@ class Bullet {
     this.speed = 3;
     
     this.spriteHeight = 100;
-    this.spriteWidth = 400 / 4;
+    this.spriteWidth = 200 / 4;
     this.srcX = 0;
     this.srcY = 0;
 
@@ -20,12 +20,12 @@ class Bullet {
     this.currentAnimTick = 0;
   }
 
-  update() {
+  update(ctx) {
     this.x -= this.speed;
-    this.draw();
+    this.draw(ctx);
   }
 
-  draw() {
+  draw(ctx) {
     let img = new Image();
     img.src = ("./assets/candycane.png")
   
@@ -41,6 +41,6 @@ class Bullet {
     }
   
     this.srcX = this.currentFrame * this.spriteWidth
-    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x , this.y, this.spriteWidth, this.spriteHeight);
+    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x , this.y, this.spriteWidth, this.spriteHeight);
   }
 }

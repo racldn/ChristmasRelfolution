@@ -5,18 +5,17 @@ class Elf {
     this.hitpoints = hitpoints;
 
     this.game = game;
-    this.canvas = document.getElementById("canvas");
-    this.ctx = this.canvas.getContext("2d");
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
-
     this.attackPower = 1;
+
 
     this.currentFrame = 0;
     this.totalFrames = 2;
 
     this.spriteHeight = 100;
     this.spriteWidth =  100;
+
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
 
@@ -24,11 +23,10 @@ class Elf {
     this.currentAnimTick = 0;
 
     this.opacity = 100;
-
     this.draw();
   }
   
-  draw() {
+  draw(ctx) {
     let img = new Image();
     img.src = (this.imgSrc);
 
@@ -49,11 +47,8 @@ class Elf {
   }
 
   update() {
-    if(this.x + this.spriteWidth < this.canvas.width) {
-      this.x += this.dx;
-    } else {
-      // lose condition
-    }
+    this.x += this.dx;
     this.draw();
+
   }
 }
