@@ -1,5 +1,5 @@
 describe("Weapon", function(){
-  var weapon, canvas, bullet, x, y;
+  var weapon, x, y;
   beforeEach(function() {
     x = 700;
     y = 0;
