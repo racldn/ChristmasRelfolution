@@ -10,7 +10,6 @@ class Elf {
  
     this.attackPower = 1;
 
-
     this.currentFrame = 0;
     this.totalFrames = 2;
 
@@ -50,6 +49,5 @@ class Elf {
   update() {
     this.x += this.dx;
     this.draw();
-
   }
 }
