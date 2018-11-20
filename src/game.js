@@ -46,7 +46,7 @@ class Game {
 			});
 			this.elves.forEach((elf) => {
 				elf.update(this.ctx);
-				// collision.elfHitsRightWall(elf, this);
+				collision.elfHitsRightWall(elf, this);
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
 			});
