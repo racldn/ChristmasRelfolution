@@ -3,7 +3,10 @@ class Elf {
     this.game = game;
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
-    this.dx = 7;
+    this.dx = 2;
+    this.hitpoints = 3;
+    this.attackPower = 1;
+
 
     this.currentFrame = 0;
     this.totalFrames = 2;
@@ -33,7 +36,6 @@ class Elf {
       }
       this.currentAnimTick = 0;
     }
-
     this.srcX = this.currentFrame * this.spriteWidth;
     
     this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);

@@ -6,6 +6,8 @@ class Weapon {
     this.y = y;
     this.w = 100;
     this.h = 100;
+  
+    this.hitpoints = 1;
 
     this.lastPosition = {
       x: this.x,
