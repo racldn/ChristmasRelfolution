@@ -5,7 +5,6 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		this.obstacles = [];
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
