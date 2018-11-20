@@ -9,7 +9,6 @@ collision = {
 				if(elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
 					game.elfSound.play();
 					game.GBMSound.play();
-
 					weapon.hitpoints -= elf.attackPower;
 					if(weapon.hitpoints <= 0) {
 						game.weapons.splice(game.weapons.indexOf(weapon), 1);
@@ -26,7 +25,7 @@ collision = {
 	elfHitsBullet: (elf, game) => {
 		game.bullets.forEach((bullet) => {
 			if(elf.x + elf.spriteWidth >= bullet.x + 50 && elf.x <= bullet.x + 50 && elf.y == bullet.y) {
-        	game.elfUh.play();
+        game.elfUh.play();
 				game.bulletHit.play();
 				elf.hitpoints -= bullet.attackPower;
 				elf.opacity -= elf.opacity / 3;
