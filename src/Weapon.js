@@ -28,7 +28,7 @@ class Weapon {
     this.animTick = 30;
     this.currentAnimTick = 0;
   }
-
+  
   draw() {
     let img = new Image();
     img.src = ('./assets/gbm.png');
@@ -52,7 +52,7 @@ class Weapon {
     this.game.addBullet(new Bullet(this.x - 50, this.y, this.game));
   }
 
-  update() {
+  update(ctx) {
     if(this.isActive) {
       if(this.currentFire >= this.fireRate) {
         this.fire();
@@ -63,7 +63,7 @@ class Weapon {
     } else {
       this.currentFire = 0;
     }
-    this.draw();
+    this.draw(ctx);
   }
 
   contains(mx, my) {
