@@ -19,25 +19,25 @@ class Game {
 			that.ctx.fillStyle = pattern;
 			that.ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
 		  };
-		this.canvas.addEventListener('click', function(event) {				
-		if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {  
-			 that.addWeapon(new Weapon(1, 0, that));	
+		this.canvas.addEventListener('click', function(event) {
+		if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {
+			 that.addWeapon(new Weapon(1, 0, that));
 			}
-		}, true); 
-		
+		}, true);
+
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
 		this.bulletHit = new Sound("assets/audio/BulletHit.mp3")
-		this.elfUh = new Sound("assets/audio/elfUh.wav") 
+		this.elfUh = new Sound("assets/audio/elfUh.wav")
 
 		this.update();
 	}
 
 	update() {
-		
+
 		var img = new Image();
 		img.src = ('./assets/gbm.png');
 
@@ -45,7 +45,7 @@ class Game {
 			this.ctx.fillStyle = pattern;
 			this.ctx.fillRect(0,0,100,100);
 
-		
+
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
