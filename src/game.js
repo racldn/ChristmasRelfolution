@@ -19,7 +19,7 @@ class Game {
 		this.dragDrop = new DragDrop(this);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3", .7)
-		this.bulletHit = new Sound("assets/audio/BulletHit.mp3", .7)
+		this.bulletHit = new Sound("assets/audio/bulletHit.mp3", .7)
 		this.elfUh = new Sound("assets/audio/elfUh.wav", .7)
 		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
 
@@ -33,7 +33,6 @@ class Game {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 			this.toobarElements.forEach((element) => {
-				//console.log(element);
 				element.draw();
 			});
 
