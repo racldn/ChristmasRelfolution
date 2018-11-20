@@ -10,7 +10,7 @@ class Bullet {
     this.speed = 3;
     
     this.spriteHeight = 100;
-    this.spriteWidth = 400 / 4;
+    this.spriteWidth = 200 / 4;
     this.srcX = 0;
     this.srcY = 0;
 

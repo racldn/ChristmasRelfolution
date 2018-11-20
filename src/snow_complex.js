@@ -18,7 +18,7 @@ var snow = (function createSnow() {
   
   function draw() { 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0)";
 
     ctx.beginPath();
     for (let i = 0; i < maxFlakes; i++) {
