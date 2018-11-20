@@ -6,6 +6,7 @@ var mouseY = 0;
 var btnPlay = new Button(417, 559, 171, 228)
 var snow = createSnow(canvasSnow);
 
+
 window.onload = function() {
   const ctx = canvasBG.getContext("2d");
   loadMenu(ctx)
@@ -26,7 +27,7 @@ function startGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   let game = new Game(canvas);
- 
+
   setBG('bg_main.jpg')
 
   setInterval(() => {
