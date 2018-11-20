@@ -5,6 +5,26 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		var mouseX = 0;
+		var mouseY = 0;
+		var that = this;
+		var buttonX = 0;
+		var buttonY = 0;
+		var buttonW = 100;
+		var buttonH = 100;
+		var img = new Image();
+		img.src = ('./assets/gbm.png');
+		img.onload = function() {
+			var pattern = that.ctx.createPattern(img, 'no-repeat');
+			that.ctx.fillStyle = pattern;
+			that.ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
+		  };
+		this.canvas.addEventListener('click', function(event) {				
+		if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {  
+			 that.addWeapon(new Weapon(1, 0, that));	
+			}
+		}, true); 
+		
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -22,6 +42,15 @@ class Game {
 	}
 
 	update() {
+		
+		var img = new Image();
+		img.src = ('./assets/gbm.png');
+
+		var pattern = this.ctx.createPattern(img, 'no-repeat');
+			this.ctx.fillStyle = pattern;
+			this.ctx.fillRect(0,0,100,100);
+
+		
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -49,7 +78,6 @@ class Game {
 			this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
 			this.ctx.fillStyle = 'pink'
 			this.ctx.fill();
-
 			this.ctx.fillStyle = 'white'
 			this.ctx.font = "20px Arial";
 			this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);

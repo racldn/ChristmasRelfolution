@@ -6,6 +6,7 @@ var mouseY = 0;
 var btnPlay = new Button(417, 559, 171, 228)
 var snow = createSnow(canvasSnow);
 
+
 window.onload = function() {
   const ctx = canvasGrid.getContext("2d");
   loadMenu(ctx)
@@ -27,10 +28,6 @@ function startGame() {
   
   let game = new Game(canvas);
   createGrid()
-  game.addWeapon(new Weapon(700, 0, game));
-  game.addWeapon(new Weapon(700, 100, game));
-  game.addWeapon(new Weapon(700, 200, game));
-  game.addWeapon(new Weapon(700, 300, game));
 
   setInterval(() => {
     if (game.inGame) {

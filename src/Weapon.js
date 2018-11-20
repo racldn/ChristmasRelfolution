@@ -16,8 +16,8 @@ class Weapon {
 
     this.fireRate = 120; // 60 refreshes = 1s roughly
     this.currentFire = 0;
+    this.isActive = false;
 
-    this.isActive = true;
 
     this.currentFrame = 0;
     this.totalFrames = 2;

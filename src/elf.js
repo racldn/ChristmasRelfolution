@@ -6,7 +6,8 @@ class Elf {
 
     this.game = game;
     this.x = 0;
-    this.y = Math.floor(Math.random() * 6) * 100;
+    this.y = Math.floor(Math.random() * 7 + 1) * 100;
+ 
     this.attackPower = 1;
 
 
