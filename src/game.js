@@ -5,25 +5,13 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		this.toobarElements = [];
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-		var buttonX = 0;
-		var buttonY = 0;
-		var buttonW = 100;
-		var buttonH = 100;
-		var img = new Image();
-		img.src = ('./assets/gbm.png');
-		img.onload = function() {
-			var pattern = that.ctx.createPattern(img, 'no-repeat');
-			that.ctx.fillStyle = pattern;
-			that.ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
-		  };
-		this.canvas.addEventListener('click', function(event) {
-		if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {
-			 that.addWeapon(new Weapon(1, 0, that));
-			}
-		}, true);
+		
+		//this.addToolbarElements('./assets/snowFlake.png');
+		this.addToolbarElements('./assets/gbm.png');
 
 		this.score = 0
 		this.inGame = true;
@@ -38,17 +26,14 @@ class Game {
 	}
 
 	update() {
-
-		var img = new Image();
-		img.src = ('./assets/gbm.png');
 		this.music.play();
-
-		var pattern = this.ctx.createPattern(img, 'no-repeat');
-			this.ctx.fillStyle = pattern;
-			this.ctx.fillRect(0,0,100,100);
-
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+			this.toobarElements.forEach((element) => {
+				//console.log(element);
+				element.draw();
+			});
 
 			this.weapons.forEach((weapon) => {
 				weapon.update(this.ctx);
@@ -78,6 +63,11 @@ class Game {
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
 		}
+	}
+
+	addToolbarElements(imgSrc) {
+		console.log(imgSrc);
+		this.toobarElements.push(new Toolbar(this, imgSrc));
 	}
 
 	addBullet(bullet) {
