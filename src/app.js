@@ -26,9 +26,9 @@ function startGame() {
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  game.addObstacle();
-
   setBG('bg_main.jpg')
+
+  game.addObstacle();
   setInterval(() => {
     if (game.inGame) {
       game.addElf();

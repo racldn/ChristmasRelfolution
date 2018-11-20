@@ -3,21 +3,19 @@ class Bullet {
     this.game = game;  
     this.currentFrame = 0;
     this.totalFrames = 4;
-
     this.x = x;
     this.y = y;
-
+    this.h = 100;
+    this.w = 200 / 4;
     this.attackPower = 1;
-
     this.speed = 3;
-    
-    this.spriteHeight = 100;
-    this.spriteWidth = 200 / 4;
     this.srcX = 0;
     this.srcY = 0;
-
     this.animTick = 20;
     this.currentAnimTick = 0;
+    this.sound = {
+      hasAttacked: new Sound("assets/audio/bulletHit.mp3", .7)
+    }
   }
 
   update(ctx) {
@@ -40,7 +38,7 @@ class Bullet {
       this.currentAnimTick = 0;
     }
   
-    this.srcX = this.currentFrame * this.spriteWidth
-    ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x , this.y, this.spriteWidth, this.spriteHeight);
+    this.srcX = this.currentFrame * this.w
+    ctx.drawImage(img, this.srcX, this.srcY, this.w, this.h, this.x , this.y, this.w, this.h);
   }
 }

@@ -16,11 +16,8 @@ class Game {
 
 		this.score = 0
 		this.inGame = true;
-		this.dragDrop = new DragDrop(this);
-		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);
-		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3", .7)
-		this.bulletHit = new Sound("assets/audio/bulletHit.mp3", .7)
-		this.elfUh = new Sound("assets/audio/elfUh.wav", .7)
+    this.dragDrop = new DragDrop(this);
+    
 		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
 
 		this.update();
@@ -35,7 +32,6 @@ class Game {
 			this.toobarElements.forEach((element) => {
 				element.draw();
 			});
-
 			this.weapons.forEach((weapon) => {
 				weapon.update(this.ctx);
 			});
@@ -49,7 +45,6 @@ class Game {
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
 			});
-
 			requestAnimationFrame(() => {
 				this.update();
 			});
@@ -67,7 +62,6 @@ class Game {
 	}
 
 	addToolbarElements(imgSrc) {
-		console.log(imgSrc);
 		this.toobarElements.push(new Toolbar(this, imgSrc));
 	}
 
