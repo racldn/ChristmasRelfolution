@@ -23,7 +23,6 @@ function setBG(name) {
   let bg = new Image();
 
   bg.src = `./assets/${name}`
-    // "./assets/bg_main.jpg";
   bg.onload = function() {
     ctx.drawImage(bg, 0, 0, 800, 600, 0, 0, 800, 600);
     createGrid();
