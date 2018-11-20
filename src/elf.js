@@ -9,17 +9,17 @@ class Elf {
     this.totalFrames = 2;
 
     this.spriteHeight = 100;
-    this.spriteWidth = 146 / 2;
+    this.spriteWidth = 200 / 2;
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
 
     this.animTick = 30;
     this.currentAnimTick = 0;
 
-    this.draw();
+    // this.draw();
   }
   
-  draw() {
+  draw(ctx) {
     let img = new Image();
     img.src = ('./assets/elf.png');
 
@@ -35,11 +35,13 @@ class Elf {
     }
 
     this.srcX = this.currentFrame * this.spriteWidth;
+    
     this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
   }
 
   update() {
     this.x += this.dx;
     this.draw();
+
   }
 }
