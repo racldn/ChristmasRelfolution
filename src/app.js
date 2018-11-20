@@ -10,7 +10,6 @@ window.onload = function() {
   const ctx = canvasBG.getContext("2d");
   loadMenu(ctx)
   document.addEventListener('click', playBtnClicked, false)
-  console.log(ctx)
 }
 
 function loadMenu(ctx) {
