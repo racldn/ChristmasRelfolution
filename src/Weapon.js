@@ -16,18 +16,43 @@ class Weapon {
     this.currentFire = 0;
 
     this.isActive = true;
+
+    this.currentFrame = 0;
+    this.totalFrames = 2;
+
+    this.spriteHeight = 100;
+    this.spriteWidth = 150 / 2;
+    this.srcX = this.currentFrame * this.spriteWidth;
+    this.srcY = 0;
+
+    this.animTick = 30;
+    this.currentAnimTick = 0;
   }
+  
   draw() {
     let img = new Image();
     img.src = ('./assets/gbm.png');
-    this.game.ctx.drawImage(img, this.x, this.y);
+
+    if (this.currentAnimTick < this.animTick) {
+      this.currentAnimTick++;
+    } else {
+      if (this.currentFrame < this.totalFrames - 1) {
+        this.currentFrame++;
+      } else {
+        this.currentFrame = 0;
+      }
+      this.currentAnimTick = 0;
+    }
+
+    this.srcX = this.currentFrame * this.spriteWidth;
+    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
   }
 
   fire() {
     this.game.addBullet(new Bullet(this.x - 50, this.y, this.game));
   }
 
-  update() {
+  update(ctx) {
     if(this.isActive) {
       if(this.currentFire >= this.fireRate) {
         this.fire();
@@ -38,7 +63,7 @@ class Weapon {
     } else {
       this.currentFire = 0;
     }
-    this.draw();
+    this.draw(ctx);
   }
 
   contains(mx, my) {

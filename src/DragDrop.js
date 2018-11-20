@@ -71,4 +71,5 @@ class DragDrop {
     this.selection.x = this.selection.lastPosition.x;
     this.selection.y = this.selection.lastPosition.y;
   };
+
 }  
