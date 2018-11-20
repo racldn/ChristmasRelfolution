@@ -8,7 +8,10 @@ var snow = createSnow(canvasSnow);
 
 window.onload = function() {
   const ctx = canvasBG.getContext("2d");
+  let music = new Sound("./assets/audio/ChristmasDay.mp3");
+
   loadMenu(ctx)
+  music.play()
   document.addEventListener('click', playBtnClicked, false)
   console.log(ctx)
 }
@@ -24,12 +27,13 @@ function loadMenu(ctx) {
 
 function startGame() {
   let ctx = canvasBG.getContext("2d");
+  let music = new Sound("./assets/audio/ChristmasDay.mp3");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+  music.play()
+
   let game = new Game(canvas);
  
   setBG('bg_main.jpg')
-  // createGrid()
 
   game.addWeapon(new Weapon(700, 0, game));
   game.addWeapon(new Weapon(700, 100, game));
