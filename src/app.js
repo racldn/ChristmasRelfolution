@@ -28,6 +28,8 @@ function startGame() {
   
   let game = new Game(canvas);
 
+  game.addObstacle();
+
   setBG('bg_main.jpg')
 
   setInterval(() => {

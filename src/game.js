@@ -5,6 +5,7 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		this.obstacles = [];
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -62,5 +63,9 @@ class Game {
 
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
+	}
+
+	addObstacle() {
+		this.weapons.push(new Obstacle(100, 100, this));
 	}
 }
