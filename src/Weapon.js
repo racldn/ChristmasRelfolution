@@ -1,8 +1,6 @@
 class Weapon {
   constructor(x, y, game) {
     this.game = game;
-    this.canvas = document.getElementById("canvas");
-    this.ctx = this.canvas.getContext("2d");
 
     this.x = x;
     this.y = y;
@@ -47,7 +45,7 @@ class Weapon {
     }
 
     this.srcX = this.currentFrame * this.spriteWidth;
-    this.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
+    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
   }
 
   fire() {
