@@ -5,47 +5,17 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		var mouseX = 0;
-		var mouseY = 0;
-		var that = this;
-		var buttonX = 0;
-		var buttonY = 0;
-		var buttonW = 100;
-		var buttonH = 100;
-		var img = new Image();
-		img.src = ('./assets/gbm.png');
-		img.onload = function() {
-			var pattern = that.ctx.createPattern(img, 'no-repeat');
-			that.ctx.fillStyle = pattern;
-			that.ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
-		  };
-		this.canvas.addEventListener('click', function(event) {
-		if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {
-			 that.addWeapon(new Weapon(1, 0, that));
-			}
-		}, true);
-
 		this.score = 0
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.elfSound = new Sound("assets/audio/elfChomp.wav");
-		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
-		this.bulletHit = new Sound("assets/audio/BulletHit.mp3")
-		this.elfUh = new Sound("assets/audio/elfUh.wav")
-
+		this.elfSound = new Sound("./assets/audio/elfChomp.wav");
+		this.GBMSound = new Sound("./assets/audio/GBMSqueal.mp3")
+		this.bulletHit = new Sound("./assets/audio/bulletHit.mp3")
+		this.elfUh = new Sound("./assets/audio/elfUh.wav")
 		this.update();
 	}
 
 	update() {
-
-		var img = new Image();
-		img.src = ('./assets/gbm.png');
-
-		var pattern = this.ctx.createPattern(img, 'no-repeat');
-			this.ctx.fillStyle = pattern;
-			this.ctx.fillRect(0,0,100,100);
-
-
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -58,7 +28,7 @@ class Game {
 			});
 			this.elves.forEach((elf) => {
 				elf.update(this.ctx);
-				collision.elfHitsRightWall(elf, this);
+				// collision.elfHitsRightWall(elf, this);
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
 			});
@@ -68,7 +38,6 @@ class Game {
 			});
 		} else {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
 			this.ctx.beginPath()
 			this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
 			this.ctx.fillStyle = 'pink'
@@ -85,7 +54,6 @@ class Game {
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
 		}
-
 	}
 
 	addBullet(bullet) {

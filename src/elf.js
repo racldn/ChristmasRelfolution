@@ -1,15 +1,13 @@
 class Elf {
   constructor(game, imgSrc, hitpoints, dx) {
+    this.game = game;
     this.imgSrc = imgSrc;
     this.dx = dx;
     this.hitpoints = hitpoints;
 
-    this.game = game;
     this.x = 0;
-    this.y = Math.floor(Math.random() * 7 + 1) * 100;
- 
+    this.y = Math.floor(Math.random() * 6) * 100;
     this.attackPower = 1;
-
 
     this.currentFrame = 0;
     this.totalFrames = 2;
@@ -27,9 +25,9 @@ class Elf {
     this.draw();
   }
   
-  draw(ctx) {
+  draw() {
     let img = new Image();
-    img.src = (this.imgSrc);
+    img.src = this.imgSrc;
 
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
@@ -42,14 +40,13 @@ class Elf {
       this.currentAnimTick = 0;
     }
     this.srcX = this.currentFrame * this.spriteWidth;
-    this.ctx.filter = `opacity(${this.opacity}%)`
-    this.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
-    this.ctx.filter = `opacity(100%)`
+    this.game.ctx.filter = `opacity(${this.opacity}%)`
+    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
+    this.game.ctx.filter = `opacity(100%)`
   }
 
   update() {
     this.x += this.dx;
     this.draw();
-
   }
 }
