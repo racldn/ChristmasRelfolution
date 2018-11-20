@@ -29,11 +29,33 @@ class Game {
 			 that.addWeapon(new Weapon(1, 0, that));	
 			}
 		}, true); 
+		
 		this.update();
 	}
 
+	// drawToolbar(){
+	// 	var buttonX = 0;
+	// 	var buttonY = 0;
+	// 	var buttonW = 100;
+	// 	var buttonH = 100;
+	// 	var that = this;
+	// 	var img = new Image();
+	// 	img.src = ('./assets/gbm.png');
+	// 	img.onload = function() {
+	// 		var pattern = that.ctx.createPattern(img, 'no-repeat');
+	// 		that.ctx.fillStyle = pattern;
+	// 		that.ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
+	// 	  };
+	// 	this.canvas.addEventListener('click', function(event) {				
+	// 	if(event.x> buttonX && event.x < buttonX + buttonW && event.y > buttonY && event.y < buttonY + buttonH) {  
+	// 		 that.addWeapon(new Weapon(1, 0, that));	
+	// 		}
+	// 	}, true);
+	// }
+
 	update() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		
 		var img = new Image();
 		img.src = ('./assets/gbm.png');
 
