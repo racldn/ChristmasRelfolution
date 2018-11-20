@@ -6,7 +6,7 @@ class Game {
 		this.bullets = [];
 		this.weapons = [];
 
-		this.dragDrop = new DragDrop(this.canvas, this.weapons);
+		this.dragDrop = new DragDrop(this);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
 
