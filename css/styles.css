@@ -1,11 +1,13 @@
 #canvas {
   position: absolute;
+  /* opacity: 0.5; */
 }
 
 #canvas-snow {
   position: absolute;
+  opacity: 0.5;
 }
 
-#canvas-grid {
+#canvas-bg {
   position: absolute;
 }

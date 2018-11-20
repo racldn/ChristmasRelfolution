@@ -31,13 +31,8 @@ class Game {
 		this.elfSound = new Sound("assets/audio/elfChomp.wav");
 		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3")
 		this.bulletHit = new Sound("assets/audio/BulletHit.mp3")
-		this.elfUh = new Sound("assets/audio/elfUh.wav")
+		this.elfUh = new Sound("assets/audio/elfUh.wav") 
 
-		let img = new Image();
-		img.src = ("./assets/bg_main.jpg");
-		img.onload = function () {
-			this.ctx.drawImage(img, 0, 0, 800, 600, 0, 0, 800, 600)
-		}  
 		this.update();
 	}
 
