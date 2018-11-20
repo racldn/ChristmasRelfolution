@@ -5,6 +5,7 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+
 		this.toobarElements = [];
 		var mouseX = 0;
 		var mouseY = 0;
@@ -27,6 +28,7 @@ class Game {
 
 	update() {
 		this.music.play();
+
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -44,7 +46,7 @@ class Game {
 			});
 			this.elves.forEach((elf) => {
 				elf.update(this.ctx);
-				collision.elfHitsRightWall(elf, this);
+				// collision.elfHitsRightWall(elf, this);
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
 			});

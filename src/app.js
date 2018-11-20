@@ -29,9 +29,9 @@ function startGame() {
   setBG('bg_main.jpg')
   setInterval(() => {
     if (game.inGame) {
-      game.addElf(new Elf(game));
+      game.addElf();
     }
-  }, 5000);
+  }, 3000);
 }
 
 function playBtnClicked(e) {
