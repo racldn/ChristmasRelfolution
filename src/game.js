@@ -5,14 +5,15 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		this.weaponCounter = 0;
 
 		this.toobarElements = [];
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-		
-		//this.addToolbarElements('./assets/snowFlake.png');
-		this.addToolbarElements('./assets/gbm.png');
+		this.toolbarEleX = 0;
+		this.addToolbarElements('./assets/gbm_small.png');
+		this.addToolbarElements('./assets/snowFlake.png');
 
 		this.score = 0
 		this.inGame = true;
@@ -26,6 +27,9 @@ class Game {
 		this.update();
 	}
 
+	incrementWeaponCounter(){
+		this.weaponCounter += 1;
+	}
 	update() {
 		this.music.play();
 
@@ -33,7 +37,6 @@ class Game {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 			this.toobarElements.forEach((element) => {
-				//console.log(element);
 				element.draw();
 			});
 
@@ -46,7 +49,6 @@ class Game {
 			});
 			this.elves.forEach((elf) => {
 				elf.update(this.ctx);
-				// collision.elfHitsRightWall(elf, this);
 				collision.elfHitsWeapon(elf, this);
 				collision.elfHitsBullet(elf, this);
 			});
@@ -69,11 +71,12 @@ class Game {
 
 	addToolbarElements(imgSrc) {
 		console.log(imgSrc);
-		this.toobarElements.push(new Toolbar(this, imgSrc));
+		this.toobarElements.push(new Toolbar(this, imgSrc,this.toolbarEleX));
+		this.toolbarEleX += 100;
 	}
 
 	addBullet(bullet) {
-  	this.bullets.push(bullet);
+  		this.bullets.push(bullet);
 	}
 
 	addWeapon(weapon) {

@@ -26,7 +26,7 @@ function startGame() {
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  let game = new Game(canvas);
+  
 
   game.addObstacle();
 

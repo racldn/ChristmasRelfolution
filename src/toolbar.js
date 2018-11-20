@@ -1,28 +1,31 @@
 class Toolbar{
-    constructor(game,imgSrc){
+    constructor(game,imgSrc, x){
         this.img = new Image();
         this.img.src = imgSrc;
         this.game = game;
-        this.counter = 0;
         this.init();
+        this.elementX = x;
     }
 
     draw(){
-        this.game.ctx.drawImage(this.img, this.counter, 600);
+        this.game.ctx.drawImage(this.img, this.elementX, 600);
         this.init();
+        this.displayScore();
     }
 
+    displayScore(){
+        this.game.score;
+    }
     init(){
         var that = this;
         this.game.canvas.addEventListener('click', (event)  => {
-            if(event.x > that.counter && event.x < that.counter + 100 && event.y > 600 && event.y < 700) {
-                //if(that.imgSrc == './assets/gbm.png') {
-                console.log('im clicked');
-                if (that.counter < 3){
-                    that.game.addWeapon(new Weapon(0, 700, that));
+            if(event.x > that.elementX && event.x < that.elementX + 100 && event.y > 600 && event.y < 700) {
+                
+                if (that.game.weaponCounter < 3){
+                    that.game.addWeapon(new Weapon(0, 600, that.game));
                 }
-                that.counter += 1;
-               // }
+                that.game.incrementWeaponCounter();
+                
             }
         }, true);
     }
