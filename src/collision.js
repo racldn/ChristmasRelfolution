@@ -20,7 +20,12 @@ collision = {
 				game.bulletHit.play();
 				game.elves.splice(game.elves.indexOf(elf), 1);
 				game.bullets.splice(game.bullets.indexOf(bullet), 1);
+				game.score++;
 			}
 		});
+	},
+
+	elfHitsRightWall: (elf, game) => {
+		if (elf.x > 750) game.inGame = false;
 	}
 }

@@ -33,8 +33,10 @@ function startGame() {
   game.addWeapon(new Weapon(700, 300, game));
 
   setInterval(() => {
-    const elf = new Elf(game);
-    game.addElf(elf);
+    if (game.inGame) {
+      game.addElf();
+    }
+
   }, 5000);
 }
 
