@@ -7,10 +7,6 @@ class Game {
 		this.weapons = [];
 		this.christmasSpirit = 150;
 		this.toobarElements = [];
-		// var mouseX = 0;
-		// var mouseY = 0;
-		// var that = this;
-		
 		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');	
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
 		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625, 'christmasSpirit');
