@@ -23,7 +23,7 @@ class Weapon {
     this.totalFrames = 2;
 
     this.spriteHeight = 100;
-    this.spriteWidth = 150 / 2;
+    this.spriteWidth = 100;
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
 
