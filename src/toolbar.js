@@ -14,11 +14,17 @@ class Toolbar {
     this.displayScore();
   }
 
-  displayScore() {
-    this.game.ctx.fillStyle = 'blue'
-    this.game.ctx.font = "20px Arial";
-    this.game.ctx.fillText(` ${this.game.christmasSpirit}`, 725, 650);
-  }
+    displayScore(){
+        this.game.ctx.fillStyle = 'rgb(213,0,0)';
+        this.game.ctx.strokeStyle = 'black';
+        this.game.ctx.font = "30px Lobster";
+        this.game.ctx.fillText(`${this.game.christmasSpirit}`, 725, 660);
+        this.game.ctx.shadowColor = 'rgb(0,0,0)';
+        this.game.ctx.shadowBlur = 15;
+        this.game.ctx.shadowOffsetY = 10;
+        this.game.ctx.shadowOffsetX = 10;
+        this.game.ctx.fill();   
+    }
   
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {

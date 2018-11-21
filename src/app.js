@@ -26,6 +26,8 @@ function startGame() {
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   setBG('bg_main.jpg', canvasBG, createGrid);
+  setTB('toolbar_bg.png', canvasBG) 
+
   setInterval(() => {
     if (game.inGame) {
       game.addElf();
