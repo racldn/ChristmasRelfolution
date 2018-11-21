@@ -25,8 +25,6 @@ function startGame() {
   let ctx = canvasBG.getContext("2d");
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  
 
   game.addObstacle();
 
