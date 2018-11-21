@@ -17,8 +17,9 @@ collision = {
 					}
 				}
 			} else if (weapon.type == 'pudding') {
-				if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
-					elf.dx = 1;
+				if (elf.x + elf.spriteWidth >= weapon.x + 60 && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
+					elf.dx = 0.5;
+					game.weapons.splice(game.weapons.indexOf(weapon), 1);
 				}
 			}
 		});
@@ -36,7 +37,7 @@ collision = {
 					game.elves.splice(game.elves.indexOf(elf), 1);
 					game.christmasSpirit += 20;
 					game.score++;
-				} 
+				}
 			}
 		});
 	},
