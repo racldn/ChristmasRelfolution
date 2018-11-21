@@ -14,7 +14,10 @@ class Toolbar{
     }
 
     displayScore(){
-        this.game.score;
+        this.game.ctx.fillStyle = 'blue'
+		this.game.ctx.font = "20px Arial";
+		this.game.ctx.fillText(`Your score is ${this.game.score}`, 650, 650);
+	
     }
     init(){
         var that = this;
