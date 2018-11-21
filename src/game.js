@@ -13,7 +13,7 @@ class Game {
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
+		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.5)
 		this.update();
 	}
   
