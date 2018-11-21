@@ -3,9 +3,11 @@ class Obstacle extends Weapon {
     super(x, y, game);
     this.type = 'pudding';
     this.hitpoints = 1;
+    this.cost = 20;
     this.totalFrames = 31;
     this.animTick = 3;
     this.img.src = './assets/christmas-pudding.png';
+    this.cost = 10;
   }
     
   draw() {

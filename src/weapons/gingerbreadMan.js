@@ -6,6 +6,7 @@ class GingerbreadMan extends Weapon {
     this.fireRate = 120; // 60 refreshes = 1s roughly
     this.currentFire = 0;
     this.totalFrames = 2;
+    this.cost = 50;
     this.animTick = 30;
     this.img.src = './assets/gbm.png';
     this.sound = {
