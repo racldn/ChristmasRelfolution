@@ -17,13 +17,20 @@ function createGrid() {
   }
 };
 
-function setBG(name) {
-  let canvas = document.getElementById('canvas-bg');
+function setBG(name, canvas, callback) {
   let ctx = canvas.getContext('2d');
   let bg = new Image();
   bg.src = `./assets/${name}`
   bg.onload = function() {
     ctx.drawImage(bg, 0, 0, 800, 600);
-    createGrid();
+    callback.call();
   }
+}
+
+function renderText(text, canvas) {
+  let ctx = canvas.getContext('2d');
+  ctx.font = `30px 'Lobster'`;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'white';
+  ctx.fillText(`${text}`, canvas.width / 2, canvas.height - 500);
 }
