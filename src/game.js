@@ -10,12 +10,11 @@ class Game {
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-		this.toolbarEleX = 0;
-		this.weaponCounter = 0;
+		this.weaponCounter = 150;
 		
-		this.addToolbarElements('./assets/gbm_small.png');	
-		this.addToolbarElements('./assets/christmas-pudding-small.png');
-		this.addToolbarElements('./assets/christmasSpirit.png');
+		this.addToolbarElements('./assets/gbm_small.png',0, 600);	
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
+		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625);
 
 		this.score = 0;
 		this.inGame = true;
@@ -73,9 +72,8 @@ class Game {
 		}
 	}
 
-	addToolbarElements(imgSrc) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, this.toolbarEleX));
-		this.toolbarEleX += 100;
+	addToolbarElements(imgSrc, x, y) {
+		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
 	}
 
 	addBullet(bullet) {
