@@ -7,24 +7,19 @@ class Game {
 		this.weapons = [];
 		this.christmasSpirit = 150;
 		this.toobarElements = [];
-		var mouseX = 0;
-		var mouseY = 0;
-		var that = this;
-		this.weaponCounter = 150;
+		// var mouseX = 0;
+		// var mouseY = 0;
+		// var that = this;
 		
-		this.addToolbarElements('./assets/gbm_small.png',0, 600);	
-		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
-		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625);
+		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');	
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
+		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625, 'christmasSpirit');
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
 		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
 		this.update();
 	}
-
-	incrementWeaponCounter(){
-		 this.weaponCounter += 1;
-	 }
   
 	update() {
 		this.music.play();
@@ -67,8 +62,8 @@ class Game {
 		}
 	}
 
-	addToolbarElements(imgSrc, x, y) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
+	addToolbarElements(imgSrc, x, y, type) {
+		this.toobarElements.push(new Toolbar(this, imgSrc, x, y, type));
 	}
 
 	addBullet(bullet) {
