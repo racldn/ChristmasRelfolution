@@ -19,9 +19,10 @@ class DragDrop {
     }, true);
 
     this.game.canvas.addEventListener('mouseup', (event) => {
-      if (this.isOccupied(this.mouse, this.weapons)) return;  
+      if (this.isOccupied(this.mouse, this.weapons)) return;
+      if (this.mouse.y > 600) return;
       let tile = this.findTile();
-      
+
       this.selection.y = tile.y;
       this.selection.x = tile.x < 100 ? tile.x + 100 : tile.x;
       this.selection.isActive = true;
@@ -30,6 +31,7 @@ class DragDrop {
   }
 
   addSelection(obj) {
+    if(this.selection) return false;
     this.selection = obj;
     this.dragOffsetX = this.mouse.x - obj.x;
     this.dragOffsetY = this.mouse.y - obj.y;

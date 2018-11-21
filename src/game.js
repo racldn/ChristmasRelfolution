@@ -7,7 +7,7 @@ class Game {
 		this.weapons = [];
 		this.christmasSpirit = 150;
 		this.toobarElements = [];
-		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');	
+		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
 		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625, 'christmasSpirit');
 		this.score = 0;
@@ -16,7 +16,7 @@ class Game {
 		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
 		this.update();
 	}
-  
+
 	update() {
 		this.music.play();
 
@@ -66,8 +66,9 @@ class Game {
 	}
 
 	addWeapon(weapon) {
-		this.weapons.push(weapon);
-		this.dragDrop.addSelection(weapon);
+		this.dragDrop.addSelection(weapon)
+		this.weapons.push(weapon)
+		console.log(this.weapons);
 	}
 
 	endGame() {
@@ -82,4 +83,3 @@ class Game {
 		this.music.stop();
 	};
 }
-

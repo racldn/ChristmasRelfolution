@@ -22,7 +22,7 @@ class Toolbar {
   }
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
-      console.log(1);
+      if(this.game.dragDrop.selection) return;
       if (event.x > this.elementX && event.x < this.elementX + 100 && event.y > this.y && event.y < (this.y + 100)) {
         if (this.type == 'gingerbreadMan' && this.game.christmasSpirit >= 50) {
           this.game.addWeapon(new GingerbreadMan(0, 600, this.game));
