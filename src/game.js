@@ -66,9 +66,7 @@ class Game {
 	}
 
 	addWeapon(weapon) {
-		this.dragDrop.addSelection(weapon)
-		this.weapons.push(weapon)
-		console.log(this.weapons);
+		this.weapons.push(weapon);
 	}
 
 	endGame() {
@@ -77,7 +75,7 @@ class Game {
 		ctxBG.clearRect(0, 0, canvasBG.width, canvasBG.height);
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.font = "30px Lobster";
-		setBG('bg_main.jpg', canvasBG);
+		setBG('bg_main.jpg', canvasBG, 700);
 
 		if (this.score == 1) {
 			renderText(`You've renegotiated ${this.score} contract!`, this.canvas);
