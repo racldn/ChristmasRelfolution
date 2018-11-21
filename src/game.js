@@ -5,18 +5,18 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		this.christmasSpirit = 150;
+		this.christmasSpirit = 200;
 		this.toobarElements = [];
-		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');	
+		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
 		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612, 'christmasSpirit');
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
+		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.5)
 		this.update();
 	}
-  
+
 	update() {
 		this.music.play();
 
@@ -26,7 +26,6 @@ class Game {
 			this.toobarElements.forEach((element) => {
 				element.draw();
 			});
-
 			this.weapons.forEach((weapon) => {
 				weapon.update(this.ctx);
 			});
@@ -51,10 +50,10 @@ class Game {
 
 	addElf() {
 		if(Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
+			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 9, 0.3));
 		}
 	}
 
@@ -67,11 +66,9 @@ class Game {
 	}
 
 	addWeapon(weapon) {
-		this.weapons.push(weapon);
-	}
-
-	addObstacle() {
-		this.weapons.push(new Obstacle(100, 100, this));
+		this.dragDrop.addSelection(weapon)
+		this.weapons.push(weapon)
+		console.log(this.weapons);
 	}
 
 	endGame() {
@@ -90,4 +87,3 @@ class Game {
 		this.music.stop();
 	};
 }
-

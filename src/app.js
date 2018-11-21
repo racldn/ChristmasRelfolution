@@ -1,18 +1,18 @@
 const canvas = document.getElementById("canvas");
 const canvasBG = document.getElementById("canvas-bg");
 const canvasSnow = document.getElementById("canvas-snow");
+const ctx = canvasBG.getContext("2d");
 var mouseX = 0;
 var mouseY = 0;
 var btnPlay = new Button(516, 642, 177, 255)
 var snow = createSnow(canvasSnow);
 
-window.onload = function() {
-  const ctx = canvasBG.getContext("2d");
-  loadMenu(ctx)
+window.onload = () => {
+  loadMenu()
   document.addEventListener('click', playBtnClicked, false)
 }
 
-function loadMenu(ctx) {
+function loadMenu() {
   let img = new Image();
   img.src = ("./assets/bg.png");
   img.onload = function() {
@@ -22,7 +22,7 @@ function loadMenu(ctx) {
 }
 
 function startGame() {
-  let ctx = canvasBG.getContext("2d");
+  document.removeEventListener('click', playBtnClicked, false)
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   setBG('bg_main.jpg', canvasBG, createGrid);
