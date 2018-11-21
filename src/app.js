@@ -32,7 +32,7 @@ function startGame() {
     if (game.inGame) {
       game.addElf();
     }
-  }, 3000);
+  }, 5500);
 }
 
 function playBtnClicked(e) {

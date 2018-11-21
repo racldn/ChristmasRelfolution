@@ -32,10 +32,6 @@ class Toolbar {
         this.game.ctx.strokeStyle = 'black';
         this.game.ctx.font = "30px Lobster";
         this.game.ctx.fillText(`${this.game.christmasSpirit}`, 725, 660);
-        this.game.ctx.shadowColor = 'rgb(0,0,0)';
-        this.game.ctx.shadowBlur = 15;
-        this.game.ctx.shadowOffsetY = 10;
-        this.game.ctx.shadowOffsetX = 10;
         this.game.ctx.fill();   
     }
 
