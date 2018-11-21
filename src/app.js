@@ -25,7 +25,7 @@ function startGame() {
   document.removeEventListener('click', playBtnClicked, false)
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  setBG('bg_main.jpg', canvasBG, createGrid);
+  setBG('bg_main_new.png', canvasBG, createGrid);
   setTB('toolbar_bg.png', canvasBG) 
 
   setInterval(() => {
@@ -33,12 +33,4 @@ function startGame() {
       game.addElf();
     }
   }, 5500);
-}
-
-function playBtnClicked(e) {
-  mouseX = e.pageX - canvas.offsetLeft;
-  mouseY = e.pageY - canvas.offsetTop;
-  if (btnPlay.isClicked(mouseX, mouseY)) {
-    startGame()
-  };
 }

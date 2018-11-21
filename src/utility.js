@@ -43,3 +43,11 @@ function renderText(text, canvas) {
   ctx.fillStyle = 'white';
   ctx.fillText(`${text}`, canvas.width / 2, canvas.height - 500);
 }
+
+function playBtnClicked(e) {
+  mouseX = e.pageX - canvas.offsetLeft;
+  mouseY = e.pageY - canvas.offsetTop;
+  if (btnPlay.isClicked(mouseX, mouseY)) {
+    startGame()
+  };
+}
