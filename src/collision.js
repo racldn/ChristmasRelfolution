@@ -5,18 +5,20 @@ collision = {
 
 	elfHitsWeapon: (elf, game) => {
 		game.weapons.forEach((weapon) => {
-			if (weapon.type == 'elf') {
-				if(elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
-					game.elfSound.play();
-					game.GBMSound.play();
-					weapon.hitpoints -= elf.attackPower;
-					if(weapon.hitpoints <= 0) {
-						game.weapons.splice(game.weapons.indexOf(weapon), 1);
+			if(weapon.isActive) {
+				if (weapon.type == 'elf') {
+					if(elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
+						game.elfSound.play();
+						game.GBMSound.play();
+						weapon.hitpoints -= elf.attackPower;
+						if(weapon.hitpoints <= 0) {
+							game.weapons.splice(game.weapons.indexOf(weapon), 1);
+						}
 					}
-				}
-			} else if (weapon.type == 'pudding') {
-				if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
-				elf.dx = 1;
+				} else if (weapon.type == 'pudding') {
+					if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
+						elf.dx = 1;
+					}
 				}
 			}
 		});
