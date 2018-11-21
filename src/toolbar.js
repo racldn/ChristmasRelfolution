@@ -12,14 +12,28 @@ class Toolbar {
   draw() {
     this.game.ctx.drawImage(this.img, this.elementX, this.y);
     this.displayScore();
+    this.displayGBMCosts();
+    this.displayPuddingCosts();
   }
 
   displayScore() {
     this.game.ctx.fillStyle = 'blue'
     this.game.ctx.font = "20px Arial";
-    this.game.ctx.fillText(` ${this.game.christmasSpirit}`, 725, 650);
+    this.game.ctx.fillText(` ${this.game.christmasSpirit}`, 725, 675);
   }
-  
+
+  displayGBMCosts() {
+    this.game.ctx.fillStyle = 'blue'
+    this.game.ctx.font = "20px Arial";
+    this.game.ctx.fillText('50', 75, 690);
+  }
+
+  displayPuddingCosts() {
+    this.game.ctx.fillStyle = 'blue'
+    this.game.ctx.font = "20px Arial";
+    this.game.ctx.fillText('10', 175, 690);
+  }
+
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
       if(this.game.dragDrop.selection) return;
