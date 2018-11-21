@@ -5,7 +5,7 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		this.christmasSpirit = 150;
+		this.christmasSpirit = 200;
 		this.toobarElements = [];
 		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
@@ -50,10 +50,10 @@ class Game {
 
 	addElf() {
 		if(Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
+			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 9, 0.3));
 		}
 	}
 
