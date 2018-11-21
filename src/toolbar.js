@@ -18,8 +18,8 @@ class Toolbar {
     this.game.ctx.fillStyle = 'blue'
     this.game.ctx.font = "20px Arial";
     this.game.ctx.fillText(` ${this.game.christmasSpirit}`, 725, 650);
-
   }
+  
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
       if(this.game.dragDrop.selection) return;
