@@ -5,6 +5,8 @@ collision = {
 
 	elfHitsWeapon: (elf, game) => {
 		game.weapons.forEach((weapon) => {
+			if(!weapon.isActive) return; // skip iteration if weapon is not active
+
 			if (weapon.type == 'elf') {
 				if(elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
 					game.elfSound.play();
@@ -16,7 +18,7 @@ collision = {
 				}
 			} else if (weapon.type == 'pudding') {
 				if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
-				elf.dx = 1;
+					elf.dx = 1;
 				}
 			}
 		});
