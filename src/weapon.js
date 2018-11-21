@@ -1,6 +1,7 @@
 class Weapon {
   constructor(x, y, game) {
     this.game = game;
+
     this.x = x;
     this.y = y;
     this.type = 'elf';
@@ -17,7 +18,6 @@ class Weapon {
     this.fireRate = 120; // 60 refreshes = 1s roughly
     this.currentFire = 0;
     this.isActive = false;
-
     this.currentFrame = 0;
     this.totalFrames = 2;
 
@@ -71,4 +71,6 @@ class Weapon {
     return (this.x <= mx) && (this.x + this.w >= mx) &&
       (this.y <= my) && (this.y + this.h >= my);
   }
+
 }
+
