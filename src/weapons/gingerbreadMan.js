@@ -3,7 +3,7 @@ class GingerbreadMan extends Weapon {
     super(x, y, game);
     this.type = 'elf';
     this.hitpoints = 1;
-    this.fireRate = 120; // 60 refreshes = 1s roughly
+    this.fireRate = 110; // 60 refreshes = 1s roughly
     this.currentFire = 0;
     this.totalFrames = 2;
     this.cost = 50;
