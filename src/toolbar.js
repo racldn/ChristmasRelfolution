@@ -24,9 +24,9 @@ class Toolbar{
         var that = this;
         this.game.canvas.addEventListener('mousedown', (event)  => {
             if(event.x > that.elementX && event.x < that.elementX + 100 && event.y > this.y && event.y < (this.y + 100)) {
-                
                 if (that.game.weaponCounter < 3){
-                    that.game.addWeapon(new GingerbreadMan(0, 600, that.game));
+                    that.game.addWeapon(new GingerbreadMan(0, that.y, that.game));
+                    that.game.addWeapon(new Obstacle(100, that.y, that.game));
                 }
                 that.game.incrementWeaponCounter();
                 

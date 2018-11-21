@@ -13,7 +13,8 @@ class Game {
 		this.toolbarEleX = 0;
 		this.weaponCounter = 0;
 		
-		this.addToolbarElements('./assets/gbm_small.png');		
+		this.addToolbarElements('./assets/gbm_small.png');	
+		this.addToolbarElements('./assets/christmas-pudding-small.png');
 		this.addToolbarElements('./assets/christmasSpirit.png');
 
 		this.score = 0;
@@ -66,9 +67,9 @@ class Game {
 
 	addElf() {
 		if(Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 3));
+			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
 		}
 	}
 
