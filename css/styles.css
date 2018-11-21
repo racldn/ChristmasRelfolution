@@ -5,16 +5,13 @@
   src: url(https://fonts.gstatic.com/s/lobster/v20/neILzCirqoswsqX9zoKmM4MwWJU.woff2);
 }
 
-#canvas {
+canvas {
   position: absolute;
-  /* opacity: 0.5; */
+  left: 50vw;
+  transform: translateX(-50%);
 }
 
 #canvas-snow {
   position: absolute;
   opacity: 0.5;
-}
-
-#canvas-bg {
-  position: absolute;
 }
