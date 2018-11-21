@@ -2,7 +2,6 @@
 
 // var snow = (function createSnow() {
 function createSnow(canvas){
-  // let canvas = document.getElementById('canvas-snow');
   let ctx = canvas.getContext("2d");
   let maxFlakes = 255;
   let flakes = [];

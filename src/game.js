@@ -10,7 +10,7 @@ class Game {
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-		
+
 		//this.addToolbarElements('./assets/snowFlake.png');
 		this.addToolbarElements('./assets/gbm.png');
 
@@ -59,7 +59,7 @@ class Game {
 	}
 
 	addElf() {
-		if(Math.floor(Math.random() * 5) < 4) {
+		if (Math.floor(Math.random() * 5) < 4) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 3));
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
@@ -72,7 +72,7 @@ class Game {
 	}
 
 	addBullet(bullet) {
-  	this.bullets.push(bullet);
+		this.bullets.push(bullet);
 	}
 
 	addWeapon(weapon) {
@@ -84,14 +84,16 @@ class Game {
 	}
 
 	endGame() {
+		let canvasBG = document.getElementById("canvas-bg");
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		this.ctx.beginPath()
-		this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-		this.ctx.fillStyle = 'pink'
-		this.ctx.fill();
-		this.ctx.fillStyle = 'white'
-		this.ctx.font = "20px Arial";
-		this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);
+		setBG('bg_main.jpg', canvasBG)
+
+		document.fonts.load('10pt "Lobster"').then(() => {
+			renderText(`You've renegotiated ${this.score} contracts!`, this.canvas)
+		});
+
 		this.music.stop();
-	};
+	}
 }
+
+
