@@ -5,24 +5,15 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-
+		this.christmasSpirit = 150;
 		this.toobarElements = [];
-		var mouseX = 0;
-		var mouseY = 0;
-		var that = this;
-		
-		//this.addToolbarElements('./assets/snowFlake.png');
-		this.addToolbarElements('./assets/gbm.png');
-
-		this.score = 0
+		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
+		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625, 'christmasSpirit');
+		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);
-		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3", .7)
-		this.bulletHit = new Sound("assets/audio/bulletHit.mp3", .7)
-		this.elfUh = new Sound("assets/audio/elfUh.wav", .7)
-		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
-
+		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.5)
 		this.update();
 	}
 
@@ -35,7 +26,6 @@ class Game {
 			this.toobarElements.forEach((element) => {
 				element.draw();
 			});
-
 			this.weapons.forEach((weapon) => {
 				weapon.update(this.ctx);
 			});
@@ -60,38 +50,36 @@ class Game {
 
 	addElf() {
 		if(Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 3));
+			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
+
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
 		}
 	}
 
-	addToolbarElements(imgSrc) {
-		console.log(imgSrc);
-		this.toobarElements.push(new Toolbar(this, imgSrc));
+	addToolbarElements(imgSrc, x, y, type) {
+		this.toobarElements.push(new Toolbar(this, imgSrc, x, y, type));
 	}
 
 	addBullet(bullet) {
-  	this.bullets.push(bullet);
+		this.bullets.push(bullet);
 	}
 
 	addWeapon(weapon) {
-		this.weapons.push(weapon);
-	}
-
-	addObstacle() {
-		this.weapons.push(new Obstacle(100, 100, this));
+		this.dragDrop.addSelection(weapon)
+		this.weapons.push(weapon)
+		console.log(this.weapons);
 	}
 
 	endGame() {
+		let canvasBG = document.getElementById("canvas-bg");
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		this.ctx.beginPath()
-		this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-		this.ctx.fillStyle = 'pink'
-		this.ctx.fill();
-		this.ctx.fillStyle = 'white'
-		this.ctx.font = "20px Arial";
-		this.ctx.fillText(`You lose! Your score is ${this.score}`, this.canvas.width / 2 - 50, this.canvas.height / 2 - 50);
+		setBG('bg_main.jpg', canvasBG)
+
+		document.fonts.load('10pt "Lobster"').then(() => {
+			renderText(`You've renegotiated ${this.score} contracts!`, this.canvas)
+		});
+
 		this.music.stop();
 	};
 }

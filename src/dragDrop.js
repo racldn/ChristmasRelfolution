@@ -10,20 +10,6 @@ class DragDrop {
   }
 
   init() {
-    this.game.canvas.addEventListener('mousedown', (event) => {
-      if(this.selection) {
-        this.restoreLastPosition()
-      }
-      this.game.weapons.reverse().some((weapon) => {
-        if (weapon.contains(this.mouse.x, this.mouse.y)) {
-          this.dragOffsetX = this.mouse.x - weapon.x;
-          this.dragOffsetY = this.mouse.y - weapon.y;
-          this.selection = weapon;
-          this.selection.isActive = false;
-        }
-      });
-    }, true);
-
     this.game.canvas.addEventListener('mousemove', (event) => {
       this.updateMousePos(event);
       if (this.selection) {
@@ -33,21 +19,22 @@ class DragDrop {
     }, true);
 
     this.game.canvas.addEventListener('mouseup', (event) => {
-      if (this.isOccupied(this.mouse, this.weapons)) {
-        this.restoreLastPosition()
-      } else {
-        let tile = this.findTile();
-        this.selection.y = tile.y;
-        this.selection.x = tile.x < 100 ? tile.x + 100 : tile.x;
-        
-        this.selection.lastPosition = {
-          x: this.selection.x,
-          y: this.selection.y
-        }
-      }
+      if (this.isOccupied(this.mouse, this.weapons)) return;
+      if (this.mouse.y > 600) return;
+      let tile = this.findTile();
+
+      this.selection.y = tile.y;
+      this.selection.x = tile.x < 100 ? tile.x + 100 : tile.x;
       this.selection.isActive = true;
       this.selection = null;
     }, true);
+  }
+
+  addSelection(obj) {
+    if(this.selection) return false;
+    this.selection = obj;
+    this.dragOffsetX = this.mouse.x - obj.x;
+    this.dragOffsetY = this.mouse.y - obj.y;
   }
 
   updateMousePos(event) {
@@ -66,9 +53,4 @@ class DragDrop {
       y: Math.floor(this.mouse.y / 100) * 100
     };
   }
-
-  restoreLastPosition() {
-    this.selection.x = this.selection.lastPosition.x;
-    this.selection.y = this.selection.lastPosition.y;
-  };
 }

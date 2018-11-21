@@ -3,21 +3,19 @@ class Bullet {
     this.game = game;  
     this.currentFrame = 0;
     this.totalFrames = 4;
-
     this.x = x;
     this.y = y;
-
     this.attackPower = 1;
-
     this.speed = 3;
-    
     this.spriteHeight = 100;
     this.spriteWidth = 200 / 4;
     this.srcX = 0;
     this.srcY = 0;
-
     this.animTick = 20;
     this.currentAnimTick = 0;
+    this.sound = {
+      hasHit: new Sound("assets/audio/bulletHit.mp3", .7)
+    }
   }
 
   update(ctx) {
