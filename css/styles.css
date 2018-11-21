@@ -7,8 +7,6 @@
 
 canvas {
   position: absolute;
-  left: 50vw;
-  transform: translateX(-50%);
 }
 
 #canvas-snow {
