@@ -9,7 +9,7 @@ class GingerbreadMan extends Weapon {
     this.animTick = 30;
     this.img.src = './assets/gbm.png';
     this.sound = {
-      takenDamage: new Sound("assets/audio/GBMSqueal.mp3", .7)
+      hasBeenHit: new Sound("assets/audio/GBMSqueal.mp3", .7)
     }
   }
   

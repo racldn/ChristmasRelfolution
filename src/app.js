@@ -28,7 +28,7 @@ function startGame() {
 
   //game.addObstacle();
 
-  setBG('bg_main.jpg')
+  setBG('bg_main.jpg', canvasBG, createGrid);
   setInterval(() => {
     if (game.inGame) {
       game.addElf();
