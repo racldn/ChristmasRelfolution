@@ -12,14 +12,33 @@ class Toolbar {
   draw() {
     this.game.ctx.drawImage(this.img, this.elementX, this.y);
     this.displayScore();
+    this.displayGBMCosts();
+    this.displayPuddingCosts();
   }
 
-  displayScore() {
-    this.game.ctx.fillStyle = 'blue'
-    this.game.ctx.font = "20px Arial";
-    this.game.ctx.fillText(` ${this.game.christmasSpirit}`, 725, 650);
-
+  displayGBMCosts() {
+    this.game.ctx.fillStyle = 'rgb(213,0,0)'
+    this.game.ctx.font = "30px Lobster";
+    this.game.ctx.fillText('50', 65, 690);
   }
+
+  displayPuddingCosts() {
+    this.game.ctx.fillStyle = 'rgb(213,0,0)'
+    this.game.ctx.font = "30px Lobster";
+    this.game.ctx.fillText('10', 165, 690);
+  }
+    displayScore(){
+        this.game.ctx.fillStyle = 'rgb(213,0,0)';
+        this.game.ctx.strokeStyle = 'black';
+        this.game.ctx.font = "30px Lobster";
+        this.game.ctx.fillText(`${this.game.christmasSpirit}`, 725, 660);
+        this.game.ctx.shadowColor = 'rgb(0,0,0)';
+        this.game.ctx.shadowBlur = 15;
+        this.game.ctx.shadowOffsetY = 10;
+        this.game.ctx.shadowOffsetX = 10;
+        this.game.ctx.fill();   
+    }
+
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
       if(this.game.dragDrop.selection) return;

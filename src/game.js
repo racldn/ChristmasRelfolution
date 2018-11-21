@@ -5,11 +5,11 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		this.christmasSpirit = 150;
+		this.christmasSpirit = 200;
 		this.toobarElements = [];
 		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
-		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625, 'christmasSpirit');
+		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612, 'christmasSpirit');
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -50,10 +50,10 @@ class Game {
 
 	addElf() {
 		if(Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
+			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 9, 0.3));
 		}
 	}
 
@@ -73,13 +73,17 @@ class Game {
 
 	endGame() {
 		let canvasBG = document.getElementById("canvas-bg");
+		let ctxBG = canvasBG.getContext('2d');
+		ctxBG.clearRect(0, 0, canvasBG.width, canvasBG.height);
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		setBG('bg_main.jpg', canvasBG)
+		this.ctx.font = "30px Lobster";
+		setBG('bg_main.jpg', canvasBG);
 
-		document.fonts.load('10pt "Lobster"').then(() => {
-			renderText(`You've renegotiated ${this.score} contracts!`, this.canvas)
-		});
-
+		if (this.score == 1) {
+			renderText(`You've renegotiated ${this.score} contract!`, this.canvas);
+		} else {
+			renderText(`You've renegotiated ${this.score} contracts!`, this.canvas);
+		};
 		this.music.stop();
 	};
 }
