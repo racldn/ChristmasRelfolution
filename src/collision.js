@@ -34,6 +34,7 @@ collision = {
 				game.bullets.splice(game.bullets.indexOf(bullet), 1);
 				if(elf.hitpoints <= 0) {
 					game.elves.splice(game.elves.indexOf(elf), 1);
+					game.christmasSpirit += 20;
 					game.score++;
 				} 
 			}

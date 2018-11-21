@@ -5,6 +5,7 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
+		this.christmasSpirit = 150;
 
 		this.toobarElements = [];
 		var mouseX = 0;
