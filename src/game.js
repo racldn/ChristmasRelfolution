@@ -13,10 +13,10 @@ class Game {
 		this.toolbarEleX = 0;
 		this.weaponCounter = 0;
 		
-		this.addToolbarElements('./assets/gbm_small.png');		
+		this.addToolbarElements('./assets/gbm.png');		
 		this.addToolbarElements('./assets/snowFlake.png');
 
-		this.score = 0
+		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
 		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);

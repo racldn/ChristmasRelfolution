@@ -5,10 +5,11 @@ class Toolbar{
         this.game = game;
         this.init();
         this.elementX = x;
+        this.y = 600;
     }
 
     draw(){
-        this.game.ctx.drawImage(this.img, this.elementX, 600);
+        this.game.ctx.drawImage(this.img, this.elementX, this.y);
         this.init();
         this.displayScore();
     }
@@ -21,8 +22,8 @@ class Toolbar{
     }
     init(){
         var that = this;
-        this.game.canvas.addEventListener('click', (event)  => {
-            if(event.x > that.elementX && event.x < that.elementX + 100 && event.y > 600 && event.y < 700) {
+        this.game.canvas.addEventListener('mousedown', (event)  => {
+            if(event.x > that.elementX && event.x < that.elementX + 100 && event.y > this.y && event.y < (this.y + 100)) {
                 
                 if (that.game.weaponCounter < 3){
                     that.game.addWeapon(new Weapon(0, 600, that.game));
