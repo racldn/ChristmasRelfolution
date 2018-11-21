@@ -1,12 +1,11 @@
 class Toolbar{
-    constructor(game,imgSrc, x){
+    constructor(game,imgSrc, x, y){
         this.img = new Image();
         this.img.src = imgSrc;
         this.game = game;
         this.elementX = x;
-        this.y = 600;
+        this.y = y;
         this.init();
-
     }
 
     draw(){
@@ -16,8 +15,8 @@ class Toolbar{
 
     displayScore(){
         this.game.ctx.fillStyle = 'blue'
-        this.game.ctx.font = "10px Arial";
-        this.game.ctx.fillText(`Your Christmas Spirit is ${this.game.christmasSpirit}`, 650, 650);
+        this.game.ctx.font = "20px Arial";
+        this.game.ctx.fillText(` ${this.game.chrstmasSpirit}`, 725, 650);
     
     }
     init(){
