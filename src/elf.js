@@ -4,24 +4,22 @@ class Elf {
     this.imgSrc = imgSrc;
     this.dx = dx;
     this.hitpoints = hitpoints;
-
     this.x = 0;
     this.y = Math.floor(Math.random() * 6) * 100;
     this.attackPower = 1;
-
     this.currentFrame = 0;
     this.totalFrames = 2;
-
     this.spriteHeight = 100;
     this.spriteWidth =  100;
-
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
-
     this.animTick = 30;
     this.currentAnimTick = 0;
-
     this.opacity = 100;
+    this.sound = {
+      hasBeenHit:	new Sound("assets/audio/elfUh.wav", .7),
+      hasHit: new Sound("assets/audio/elfChomp.wav", .7)
+    }
     this.draw();
   }
   

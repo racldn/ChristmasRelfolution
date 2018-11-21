@@ -5,27 +5,25 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-
 		this.toobarElements = [];
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-
-		//this.addToolbarElements('./assets/snowFlake.png');
-		this.addToolbarElements('./assets/gbm.png');
-
-		this.score = 0
+		this.toolbarEleX = 0;
+		this.weaponCounter = 0;
+		this.addToolbarElements('./assets/gbm.png');		
+		this.addToolbarElements('./assets/snowFlake.png');
+		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.elfSound = new Sound("assets/audio/elfChomp.wav", .7);
-		this.GBMSound = new Sound("assets/audio/GBMSqueal.mp3", .7)
-		this.bulletHit = new Sound("assets/audio/bulletHit.mp3", .7)
-		this.elfUh = new Sound("assets/audio/elfUh.wav", .7)
 		this.music = new Sound("assets/audio/ChristmasDay.mp3", 0.05)
-
 		this.update();
 	}
 
+	incrementWeaponCounter(){
+		 this.weaponCounter += 1;
+	 }
+  
 	update() {
 		this.music.play();
 
@@ -67,8 +65,8 @@ class Game {
 	}
 
 	addToolbarElements(imgSrc) {
-		console.log(imgSrc);
-		this.toobarElements.push(new Toolbar(this, imgSrc));
+		this.toobarElements.push(new Toolbar(this, imgSrc, this.toolbarEleX));
+		this.toolbarEleX += 100;
 	}
 
 	addBullet(bullet) {
@@ -93,7 +91,6 @@ class Game {
 		});
 
 		this.music.stop();
-	}
+	};
 }
-
 

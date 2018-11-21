@@ -11,9 +11,8 @@ class DragDrop {
 
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
-      if(this.selection) {
-        this.restoreLastPosition()
-      }
+      if(this.selection) this.restoreLastPosition();
+
       this.game.weapons.reverse().some((weapon) => {
         if (weapon.contains(this.mouse.x, this.mouse.y)) {
           this.dragOffsetX = this.mouse.x - weapon.x;
