@@ -1,33 +1,36 @@
-class Elf {
-  constructor(game, imgSrc, hitpoints, dx) {
+class Obstacle {
+  constructor(x, y, game) {
     this.game = game;
-    this.imgSrc = imgSrc;
-    this.dx = dx;
-    this.hitpoints = hitpoints;
+    this.x = x;
+    this.y = y;
+    this.type = 'pudding';
+    this.w = 100;
+    this.h = 100;
+  
+    this.hitpoints = 1;
 
-    this.x = 0;
-    this.y = Math.floor(Math.random() * 6) * 100;
-    this.attackPower = 1;
+    this.lastPosition = {
+      x: this.x,
+      y: this.y
+    };
+
+    this.isActive = true;
 
     this.currentFrame = 0;
-    this.totalFrames = 2;
+    this.totalFrames = 31;
 
     this.spriteHeight = 100;
-    this.spriteWidth =  100;
-
+    this.spriteWidth = 100;
     this.srcX = this.currentFrame * this.spriteWidth;
     this.srcY = 0;
 
-    this.animTick = 30;
+    this.animTick = 3;
     this.currentAnimTick = 0;
-
-    this.opacity = 100;
-    this.draw();
   }
-  
+    
   draw() {
     let img = new Image();
-    img.src = this.imgSrc;
+    img.src = ('./assets/christmas-pudding.png');
 
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
@@ -39,14 +42,18 @@ class Elf {
       }
       this.currentAnimTick = 0;
     }
+
     this.srcX = this.currentFrame * this.spriteWidth;
-    this.game.ctx.filter = `opacity(${this.opacity}%)`
     this.game.ctx.drawImage(img, this.srcX, this.srcY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
-    this.game.ctx.filter = `opacity(100%)`
   }
 
-  update() {
-    this.x += this.dx;
-    this.draw();
+  update(ctx) {
+    // isactive
+    this.draw(ctx);
+  }
+
+  contains(mx, my) {
+    return (this.x <= mx) && (this.x + this.w >= mx) &&
+      (this.y <= my) && (this.y + this.h >= my);
   }
 }

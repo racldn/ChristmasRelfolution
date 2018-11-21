@@ -6,7 +6,6 @@ var mouseY = 0;
 var btnPlay = new Button(417, 559, 171, 228)
 var snow = createSnow(canvasSnow);
 
-
 window.onload = function() {
   const ctx = canvasBG.getContext("2d");
   loadMenu(ctx)
@@ -24,17 +23,17 @@ function loadMenu(ctx) {
 
 function startGame() {
   let ctx = canvasBG.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
   let game = new Game(canvas);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  game.addObstacle();
 
   setBG('bg_main.jpg')
-
   setInterval(() => {
     if (game.inGame) {
-      game.addElf(new Elf(game));
+      game.addElf();
     }
-  }, 5000);
+  }, 3000);
 }
 
 function playBtnClicked(e) {
