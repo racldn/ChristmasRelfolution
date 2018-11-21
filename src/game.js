@@ -10,8 +10,9 @@ class Game {
 		var mouseY = 0;
 		var that = this;
 		this.toolbarEleX = 0;
+		this.weaponCounter = 0;
 		
-		this.addToolbarElements('./assets/gbm.png');		
+		this.addToolbarElements('./assets/gbm_small.png');		
 		this.addToolbarElements('./assets/snowFlake.png');
 
 		this.score = 0
