@@ -9,10 +9,11 @@ class Game {
 		var mouseX = 0;
 		var mouseY = 0;
 		var that = this;
-		this.toolbarEleX = 0;
-		this.weaponCounter = 0;
-		this.addToolbarElements('./assets/gbm.png');		
-		this.addToolbarElements('./assets/snowFlake.png');
+		this.weaponCounter = 150;
+		
+		this.addToolbarElements('./assets/gbm_small.png',0, 600);	
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
+		this.addToolbarElements('./assets/christmasSpirit.png', 670, 625);
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -57,16 +58,16 @@ class Game {
 	}
 
 	addElf() {
-		if (Math.floor(Math.random() * 5) < 4) {
-			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 3));
+		if(Math.floor(Math.random() * 5) < 4) {
+			this.elves.push(new Elf(this, './assets/red-elf.png', 2, 1));
+
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 2));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 4, 1));
 		}
 	}
 
-	addToolbarElements(imgSrc) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, this.toolbarEleX));
-		this.toolbarEleX += 100;
+	addToolbarElements(imgSrc, x, y) {
+		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
 	}
 
 	addBullet(bullet) {
