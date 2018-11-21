@@ -3,7 +3,6 @@ const canvasBG = document.getElementById("canvas-bg");
 const canvasSnow = document.getElementById("canvas-snow");
 var mouseX = 0;
 var mouseY = 0;
-// var btnPlay = new Button(417, 559, 171, 228)
 var btnPlay = new Button(516, 642, 177, 255)
 var snow = createSnow(canvasSnow);
 
