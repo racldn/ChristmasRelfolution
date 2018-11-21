@@ -26,7 +26,6 @@ class Game {
 			this.toobarElements.forEach((element) => {
 				element.draw();
 			});
-
 			this.weapons.forEach((weapon) => {
 				weapon.update(this.ctx);
 			});
@@ -68,10 +67,7 @@ class Game {
 
 	addWeapon(weapon) {
 		this.weapons.push(weapon);
-	}
-
-	addObstacle() {
-		this.weapons.push(new Obstacle(100, 100, this));
+		this.dragDrop.addSelection(weapon);
 	}
 
 	endGame() {

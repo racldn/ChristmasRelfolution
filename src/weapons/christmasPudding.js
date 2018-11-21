@@ -1,4 +1,4 @@
-class Obstacle extends Weapon {
+class ChristmasPudding extends Weapon {
   constructor(x, y, game) {
     super(x, y, game);
     this.type = 'pudding';
