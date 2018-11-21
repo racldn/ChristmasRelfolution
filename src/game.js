@@ -11,8 +11,8 @@ class Game {
 		var that = this;
 		this.toolbarEleX = 0;
 		
-		//this.addToolbarElements('./assets/snowFlake.png');
-		this.addToolbarElements('./assets/gbm.png');
+		this.addToolbarElements('./assets/gbm.png');		
+		this.addToolbarElements('./assets/snowFlake.png');
 
 		this.score = 0
 		this.inGame = true;
@@ -25,6 +25,10 @@ class Game {
 		this.update();
 	}
 
+	incrementWeaponCounter(){
+		 this.weaponCounter += 1;
+	 }
+		
 
 	update() {
 		if (this.inGame) {
@@ -75,7 +79,6 @@ class Game {
 	}
 
 	addToolbarElements(imgSrc) {
-		//console.log(imgSrc);
 		this.toobarElements.push(new Toolbar(this, imgSrc, this.toolbarEleX));
 		this.toolbarEleX += 100;
 	}
