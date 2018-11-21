@@ -17,15 +17,15 @@ class Toolbar {
   }
 
   displayGBMCosts() {
-    this.game.ctx.fillStyle = 'blue'
+    this.game.ctx.fillStyle = 'rgb(213,0,0)'
     this.game.ctx.font = "30px Lobster";
-    this.game.ctx.fillText('50', 75, 690);
+    this.game.ctx.fillText('50', 65, 690);
   }
 
   displayPuddingCosts() {
-    this.game.ctx.fillStyle = 'blue'
+    this.game.ctx.fillStyle = 'rgb(213,0,0)'
     this.game.ctx.font = "30px Lobster";
-    this.game.ctx.fillText('10', 175, 690);
+    this.game.ctx.fillText('10', 165, 690);
   }
     displayScore(){
         this.game.ctx.fillStyle = 'rgb(213,0,0)';
@@ -38,7 +38,7 @@ class Toolbar {
         this.game.ctx.shadowOffsetX = 10;
         this.game.ctx.fill();   
     }
- 
+
   init() {
     this.game.canvas.addEventListener('mousedown', (event) => {
       if(this.game.dragDrop.selection) return;
