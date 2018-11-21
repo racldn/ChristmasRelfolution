@@ -19,7 +19,6 @@ class Elf {
     this.sound = {
       hasAttacked: new Sound("assets/audio/elfChomp.wav", .7),
       takenDamage: new Sound("assets/audio/elfUh.wav", .7)
-
     } 
     this.draw();
   }

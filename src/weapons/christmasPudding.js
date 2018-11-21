@@ -5,12 +5,10 @@ class Obstacle extends Weapon {
     this.hitpoints = 1;
     this.totalFrames = 31;
     this.animTick = 3;
+    this.img.src = './assets/christmas-pudding.png';
   }
     
   draw() {
-    let img = new Image();
-    img.src = ('./assets/christmas-pudding.png');
-
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
     } else {
@@ -23,7 +21,7 @@ class Obstacle extends Weapon {
     }
 
     this.srcX = this.currentFrame * this.w;
-    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.w, this.h, this.x, this.y, this.w, this.h);
+    this.game.ctx.drawImage(this.img, this.srcX, this.srcY, this.w, this.h, this.x, this.y, this.w, this.h);
   }
 
   update() {

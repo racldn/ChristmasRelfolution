@@ -16,7 +16,6 @@ collision = {
 				}
 			} else if (weapon.type == 'pudding') {
 				if (elf.x + elf.w >= weapon.x && elf.x + elf.w <= weapon.x + weapon.w && elf.y == weapon.y) {
-          console.log('this');
           elf.dx = 1;
 				}
 			}

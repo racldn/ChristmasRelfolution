@@ -7,15 +7,13 @@ class GingerbreadMan extends Weapon {
     this.currentFire = 0;
     this.totalFrames = 2;
     this.animTick = 30;
+    this.img.src = './assets/gbm.png';
     this.sound = {
       takenDamage: new Sound("assets/audio/GBMSqueal.mp3", .7)
     }
   }
   
   draw() {
-    let img = new Image();
-    img.src = ('./assets/gbm.png');
-
     if (this.currentAnimTick < this.animTick) {
       this.currentAnimTick++;
     } else {
@@ -28,7 +26,7 @@ class GingerbreadMan extends Weapon {
     }
 
     this.srcX = this.currentFrame * this.w;
-    this.game.ctx.drawImage(img, this.srcX, this.srcY, this.w, this.h, this.x, this.y, this.w, this.h);
+    this.game.ctx.drawImage(this.img, this.srcX, this.srcY, this.w, this.h, this.x, this.y, this.w, this.h);
   }
 
   fire() {
