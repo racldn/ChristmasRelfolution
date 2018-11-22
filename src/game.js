@@ -31,7 +31,7 @@ class Game {
     }, this.spawnSpeed);
 
     if (this.firstSpawn) {
-      this.spawnSpeed = 5500;
+      this.spawnSpeed = 5000;
       this.firstSpawn = false;
     }
 	}
@@ -68,16 +68,19 @@ class Game {
 	}
 
 	addElf() {
-		if(this.score >= 5 && this.score < 10 ) {
-			this.spawnSpeed = 3000;
-			this.spawnChance = 3;
-		} else if(this.score >= 10 && this.score < 15) {
-			this.spawnSpeed = 2500;
-			this.spawnChance = 2;
-		} else if(this.score > 15) {
-			this.spawnChance = 2;
-			this.spawnSpeed = 1500;
-		}
+		if(this.score >= 5 && this.score < 7 ) {
+			this.spawnSpeed = 4500;
+		} else if(this.score >= 7 && this.score < 10) {
+			this.spawnSpeed = 4100;
+		} else if(this.score >= 10 && this.socre <= 14) {
+      this.spawnChance = 3;
+			this.spawnSpeed = 3700;
+		} else if(this.score >= 14 && this.socre < 19) {
+      this.spawnChance = 2;
+      this.spawnSpeed = 3200;
+    } else if(this.score > 19) {
+      this.spawnSpeed = 2500;
+    }
 		console.log('sc: ', this.spawnChance, ' : ss: ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
