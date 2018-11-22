@@ -7,7 +7,10 @@ describe("Game", function(){
     elf = jasmine.createSpyObj('elf',['draw','update']);
     weapon = jasmine.createSpyObj('weapon',['draw','update']);
     bullet = jasmine.createSpyObj('bullet',['draw','update']);
-    collision = jasmine.createSpyObj('collision',['bulletHitsSide','elfHitsWeapon','elfHitsBullet']);
+    spyOn(collision,'bulletHitsSide').and.callThrough();
+    spyOn(collision,'elfHitsWeapon').and.callThrough();
+    spyOn(collision,'elfHitsBullet').and.callThrough();
+    spyOn(collision,'elfHitsRightWall').and.callThrough();
   });
 
   describe("new game", function() {
@@ -32,18 +35,18 @@ describe("Game", function(){
     });
 
     it("should call elf's update method", function(){
-      game.addElf(elf);
+      game.addElf();
       game.update();
-      expect(elf.update).toHaveBeenCalled();
-      expect(collision.elfHitsWeapon).toHaveBeenCalledWith(elf, game);
-      expect(collision.elfHitsBullet).toHaveBeenCalledWith(elf, game);
+      expect(collision.elfHitsRightWall).toHaveBeenCalled();
+      expect(collision.elfHitsWeapon).toHaveBeenCalled();
+      expect(collision.elfHitsBullet).toHaveBeenCalled();
     });
   });
 
   describe("addElf", function() {
     it("should add elf in elves array(game.elves)", function(){
-      game.addElf(elf);
-      expect(game.elves).toContain(elf);
+      game.addElf();
+      expect(game.elves.length).toEqual(1);
     });
   });
 
