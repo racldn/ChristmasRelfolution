@@ -1,7 +1,7 @@
 class DragDrop {
   constructor(game) {
     this.game = game
-    this.canvasOffset = canvas.getBoundingClientRect();
+    this.canvasOffset = this.game.canvas.getBoundingClientRect();
     this.selection;
     this.dragOffsetX = 0;
     this.dragOffsetY = 0;
