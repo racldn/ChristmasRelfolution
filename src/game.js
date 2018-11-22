@@ -58,6 +58,10 @@ class Game {
 		}
 	}
 
+	addToolbarElements(imgSrc, x, y) {
+		this.toolbarElements.push(new ToolbarElement(this, imgSrc, x, y));
+	}
+
 	addElf() {
 		if(this.score >= 10 && this.score < 15 ) {
 			this.initElves();
@@ -80,17 +84,25 @@ class Game {
 		}
 	}
 
-	addToolbarElements(imgSrc, x, y) {
-		this.toolbarElements.push(new ToolbarElement(this, imgSrc, x, y));
-	}
+	removeElf(elf) {
+		this.elves.splice(this.elves.indexOf(elf), 1);
+	};
 
 	addBullet(bullet) {
 		this.bullets.push(bullet);
 	}
 
+	removeBullet(bullet) {
+		this.bullets.splice(this.bullets.indexOf(bullet), 1);
+	};
+
 	addWeapon(weapon) {
 		this.weapons.push(weapon)
-	}
+	};
+
+	removeWeapon(weapon) {
+		this.weapons.splice(this.weapons.indexOf(weapon), 1);
+	};
 
 	endGame() {
 		let canvasBG = document.getElementById("canvas-bg");
