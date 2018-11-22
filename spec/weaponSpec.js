@@ -19,25 +19,25 @@ describe("Weapon", function(){
     });
   });
 
-  describe("draw", function(){
-    it("should call ctx's drawImage function", function(){
-      weapon.draw(ctx);
-      expect(ctx.drawImage).toHaveBeenCalled();
-    });
-  });
+  // describe("draw", function(){
+  //   it("should call ctx's drawImage function", function(){
+  //     weapon.draw(ctx);
+  //     expect(ctx.drawImage).toHaveBeenCalled();
+  //   });
+  // });
 
-  describe("fire", function(){
-    it("should add bullet method on game", function(){
-      weapon.fire();
-      expect(game.addBullet).toHaveBeenCalled();
-    });
-  });
+  // describe("fire", function(){
+  //   it("should add bullet method on game", function(){
+  //     weapon.fire();
+  //     expect(game.addBullet).toHaveBeenCalled();
+  //   });
+  // });
 
-  describe("update", function(){
-    it("should call draw function on weapon", function(){
-      spyOn(weapon, 'draw');
-      weapon.update(ctx);
-      expect(weapon.draw).toHaveBeenCalledWith(ctx);
-    });
-  });
+  // describe("update", function(){
+  //   it("should call draw function on weapon", function(){
+  //     spyOn(weapon, 'draw');
+  //     weapon.update(ctx);
+  //     expect(weapon.draw).toHaveBeenCalledWith(ctx);
+  //   });
+  // });
 })

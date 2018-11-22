@@ -68,7 +68,6 @@ class Game {
 	addWeapon(weapon) {
 		this.dragDrop.addSelection(weapon)
 		this.weapons.push(weapon)
-		console.log(this.weapons);
 	}
 
 	endGame() {

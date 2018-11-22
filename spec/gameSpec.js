@@ -2,12 +2,12 @@ describe("Game", function(){
   var game, canvas, elf, weapon, bullet;
 
   beforeEach(function() {
-    canvas = document.getElementById("game-canvas");
+    canvas = document.getElementById("canvas");
     game = new Game(canvas);
     elf = jasmine.createSpyObj('elf',['draw','update']);
     weapon = jasmine.createSpyObj('weapon',['draw','update']);
     bullet = jasmine.createSpyObj('bullet',['draw','update']);
-    collision = jasmine.createSpyObj('collision',['bulletHitsSide','elfHitsWeapon','elfHitsBullet']);
+    collision = jasmine.createSpyObj('collision',['bulletHitsSide','elfHitsWeapon','elfHitsRightWall','elfHitsBullet']);
   });
 
   describe("new game", function() {
@@ -17,7 +17,6 @@ describe("Game", function(){
   });
 
   describe("update", function() {
-   
     it("should call weapon's update method", function(){
       game.addWeapon(weapon);
       game.update();
@@ -32,18 +31,20 @@ describe("Game", function(){
     });
 
     it("should call elf's update method", function(){
-      game.addElf(elf);
+      game.addElf();
       game.update();
-      expect(elf.update).toHaveBeenCalled();
+      //spyOn(elf, 'update');
       expect(collision.elfHitsWeapon).toHaveBeenCalledWith(elf, game);
       expect(collision.elfHitsBullet).toHaveBeenCalledWith(elf, game);
+     // expect(elf.update).toHaveBeenCalled();
+      
     });
   });
 
   describe("addElf", function() {
     it("should add elf in elves array(game.elves)", function(){
-      game.addElf(elf);
-      expect(game.elves).toContain(elf);
+      game.addElf();
+      expect(game.elves.length).toEqual(1);
     });
   });
 
@@ -53,6 +54,13 @@ describe("Game", function(){
       expect(game.weapons).toContain(weapon);
     });
   });
+
+  // describe("addToolbarElements", function() {
+  //   it("should add toolbar element in toolbars array", function(){
+  //     game.addToolbarElements();
+  //     expect(game.toobarElements).toEqual(1);
+  //   });
+  // });
 
    describe("addBullet", function() {
     it("should add bullet in bullets array(game.bullets)", function(){
