@@ -8,8 +8,11 @@ class Game {
 		this.christmasSpirit = 150;
 		this.toolbarElements = [];
 		this.spawnChance = 4;
-		this.spawnSpeed = 5500; // ms
-		this.spawnInterval;
+    this.spawnSpeed = 1500; // This only counts for the FIRST spawn. Every time after it's set inside initElves()
+    this.firstSpawn = true;
+		this.addToolbarElements('./assets/gbm_small.png',0, 600);
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
+		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -19,12 +22,16 @@ class Game {
 	}
 
 	initElves() {
-		clearInterval(this.spawnInterval);
-		this.spawnInterval = setInterval(() => {
+		setTimeout(() => {
 			if (this.inGame) {
 				this.addElf();
 			}
-		}, this.spawnSpeed);
+    }, this.spawnSpeed);
+
+    if (this.firstSpawn) {
+      this.spawnSpeed = 4700;
+      this.firstSpawn = false;
+    }
 	}
 
 	update() {
@@ -50,9 +57,9 @@ class Game {
 				collision.elfHitsBullet(elf, this);
 			});
 
-			requestAnimationFrame(() => {
+			setTimeout(() => {
 				this.update();
-			});
+			}, 1000 / 60);
 		} else {
 			this.endGame()
 		}
@@ -63,25 +70,26 @@ class Game {
 	}
 
 	addElf() {
-		if(this.score >= 10 && this.score < 15 ) {
-			this.initElves();
-			this.spawnSpeed = 3000;
-			this.spawnChance = 3;
-		} else if(this.score >= 15 && this.score < 20) {
-			this.initElves();
-			this.spawnSpeed = 2000;
-			this.spawnChance = 2;
-		} else if(this.score > 20) {
-			this.initElves();
-			this.spawnChance = 2;
-			this.spawnSpeed = 100;
-		}
+		if(this.score >= 5 && this.score < 7 ) {
+			this.spawnSpeed = 4300;
+		} else if(this.score >= 7 && this.score < 10) {
+			this.spawnSpeed = 3900;
+		} else if(this.score >= 10 && this.socre <= 14) {
+      this.spawnChance = 3;
+			this.spawnSpeed = 3400;
+		} else if(this.score >= 14 && this.socre < 19) {
+      this.spawnChance = 2;
+      this.spawnSpeed = 3100;
+    } else if(this.score > 19) {
+      this.spawnSpeed = 2450;
+    }
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
-
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 11, 0.3));
-		}
+    }
+    
+    this.initElves();
 	}
 
 	removeElf(elf) {

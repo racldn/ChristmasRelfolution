@@ -8,7 +8,7 @@ collision = {
 			if (!weapon.isActive) return; // skip iteration if weapon is not active
 
 			if (weapon.type == 'elf') {
-				if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
+				if (elf.x + elf.spriteWidth >= weapon.x + 50 && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
 					elf.sound.hasHit.play();
 					weapon.sound.hasBeenHit.play();
 					weapon.subtractHitpoints(elf.attackPower);
