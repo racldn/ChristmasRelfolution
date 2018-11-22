@@ -47,7 +47,6 @@ function renderText(text, canvas) {
 function playBtnClicked(e) {
   mouseX = e.pageX - canvasOffset.left;
   mouseY = e.pageY - canvasOffset.top;
-  console.log(mouseX, ' : ', mouseY)
   if (btnPlay.isClicked(mouseX, mouseY)) {
     startGame();
   };

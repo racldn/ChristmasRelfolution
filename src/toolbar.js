@@ -1,9 +1,8 @@
 class Toolbar {
-  constructor(game, imgSrc, x, y, type) {
+  constructor(game, imgSrc, x, y) {
     this.img = new Image();
     this.img.src = imgSrc;
     this.game = game;
-    this.type = type;
     this.elementX = x;
     this.y = y;
   }
