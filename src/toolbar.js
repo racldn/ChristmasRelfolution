@@ -34,3 +34,4 @@ class Toolbar {
     this.game.ctx.fill();
   }
 }
+
