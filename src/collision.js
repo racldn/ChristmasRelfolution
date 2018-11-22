@@ -1,18 +1,18 @@
 collision = {
 	bulletHitsSide: (bullet, game) => {
-		if(bullet.x <= 0) game.removeBullet(bullet)
+		if (bullet.x <= 0) game.removeBullet(bullet)
 	},
 
 	elfHitsWeapon: (elf, game) => {
 		game.weapons.forEach((weapon) => {
-			if(!weapon.isActive) return; // skip iteration if weapon is not active
+			if (!weapon.isActive) return; // skip iteration if weapon is not active
 
 			if (weapon.type == 'elf') {
-				if(elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
+				if (elf.x + elf.spriteWidth >= weapon.x && elf.x + elf.spriteWidth <= weapon.x + weapon.w && elf.y == weapon.y) {
 					elf.sound.hasHit.play();
 					weapon.sound.hasBeenHit.play();
-					weapon.hitpoints -= elf.attackPower;
-					if(weapon.hitpoints <= 0) {
+					weapon.subtractHitpoints(elf.attackPower);
+					if (weapon.hitpoints <= 0) {
 						game.removeWeapon(weapon);
 					}
 				}
@@ -27,13 +27,13 @@ collision = {
 
 	elfHitsBullet: (elf, game) => {
 		game.bullets.forEach((bullet) => {
-			if(elf.x + elf.spriteWidth >= bullet.x + 50 && elf.x <= bullet.x + 50 && elf.y == bullet.y) {
-        elf.sound.hasBeenHit.play();
+			if (elf.x + elf.spriteWidth >= bullet.x + 50 && elf.x <= bullet.x + 50 && elf.y == bullet.y) {
+				elf.sound.hasBeenHit.play();
 				bullet.sound.hasHit.play();
-				elf.hitpoints -= bullet.attackPower;
+				elf.subtractHitpoints(bullet.attackPower);
 				elf.opacity -= elf.opacity / 10;
 				game.removeBullet(bullet);
-				if(elf.hitpoints <= 0) {
+				if (elf.hitpoints <= 0) {
 					game.removeElf(elf);
 					game.christmasSpirit += 20;
 					game.score++;
