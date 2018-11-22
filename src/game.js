@@ -57,8 +57,8 @@ class Game {
 		}
 	}
 
-	addToolbarElements(imgSrc, x, y, type) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, x, y, type));
+	addToolbarElements(imgSrc, x, y) {
+		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
 	}
 
 	addBullet(bullet) {
