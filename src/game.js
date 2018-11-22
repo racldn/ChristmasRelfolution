@@ -7,9 +7,9 @@ class Game {
 		this.weapons = [];
 		this.christmasSpirit = 200;
 		this.toobarElements = [];
-		this.addToolbarElements('./assets/gbm_small.png',0, 600, 'gingerbreadMan');
-		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600, 'pudding');
-		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612, 'christmasSpirit');
+		this.addToolbarElements('./assets/gbm_small.png',0, 600);
+		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
+		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);

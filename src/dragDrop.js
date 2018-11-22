@@ -36,11 +36,12 @@ class DragDrop {
 
       let weapon;
 
+      
       if (this.mouse.x >= 0 && this.mouse.x < 100) {
-        if(!this.game.christmasSpirit >= 50) return;
+        if(this.game.christmasSpirit < 50) return;
         weapon = new GingerbreadMan(0, 600, this.game);
       } else if (this.mouse.x >= 100 && this.mouse.x < 200) {
-        if(!this.game.christmasSpirit >= 10) return;
+        if(this.game.christmasSpirit < 10) return;
         weapon = new ChristmasPudding(100, 600, this.game);   
       } else {
         return; // RETURN IF 'NULL' IS SELECTED - WILL CRASH IF REMOVED
