@@ -9,6 +9,7 @@ class Toolbar {
         this.init();
     }
 
+
     draw() {
         this.game.ctx.drawImage(this.img, this.elementX, this.y);
         this.displayScore();
@@ -21,6 +22,7 @@ class Toolbar {
         this.game.ctx.font = "30px Lobster";
         this.game.ctx.fillText('50', 60, 690);
     }
+
 
     displayPuddingCosts() {
         this.game.ctx.fillStyle = 'rgb(213,0,0)'
@@ -49,4 +51,5 @@ class Toolbar {
             }
         }, true);
     }
+
 }

@@ -2,9 +2,10 @@ const canvas = document.getElementById("canvas");
 const canvasBG = document.getElementById("canvas-bg");
 const canvasSnow = document.getElementById("canvas-snow");
 const ctx = canvasBG.getContext("2d");
+var canvasOffset = canvas.getBoundingClientRect();
 var mouseX = 0;
 var mouseY = 0;
-var btnPlay = new Button(516, 642, 177, 255)
+var btnPlay = new Button(516, 642, 177, 255);
 var snow = createSnow(canvasSnow);
 
 window.onload = () => {
@@ -33,4 +34,13 @@ function startGame() {
       game.addElf();
     }
   }, 5500);
+}
+
+function playBtnClicked(e) {
+  mouseX = e.pageX - canvasOffset.left;
+  mouseY = e.pageY - canvasOffset.top;
+  console.log(mouseX, ' : ', mouseY)
+  if (btnPlay.isClicked(mouseX, mouseY)) {
+    startGame();
+  };
 }
