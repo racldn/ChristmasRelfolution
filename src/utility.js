@@ -51,3 +51,9 @@ function playBtnClicked(e) {
     startGame();
   };
 }
+
+function setupToolbar(game){
+  game.addToolbarElements('./assets/gbm_small.png', 0, 600);
+  game.addToolbarElements('./assets/christmas-pudding-small.png', 100, 600);
+  game.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
+}

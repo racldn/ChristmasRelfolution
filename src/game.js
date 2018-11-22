@@ -6,13 +6,10 @@ class Game {
 		this.bullets = [];
 		this.weapons = [];
 		this.christmasSpirit = 150;
-		this.toobarElements = [];
+		this.toolbarElements = [];
 		this.spawnChance = 4;
 		this.spawnSpeed = 5500; // ms
 		this.spawnInterval;
-		this.addToolbarElements('./assets/gbm_small.png',0, 600);
-		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
-		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
@@ -36,7 +33,7 @@ class Game {
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-			this.toobarElements.forEach((element) => {
+			this.toolbarElements.forEach((element) => {
 				element.draw();
 			});
 			this.weapons.forEach((weapon) => {
@@ -75,7 +72,6 @@ class Game {
 			this.spawnChance = 2;
 			this.spawnSpeed = 100;
 		}
-		console.log(this.spawnChance, ' : ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
@@ -85,7 +81,7 @@ class Game {
 	}
 
 	addToolbarElements(imgSrc, x, y) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
+		this.toolbarElements.push(new ToolbarElement(this, imgSrc, x, y));
 	}
 
 	addBullet(bullet) {

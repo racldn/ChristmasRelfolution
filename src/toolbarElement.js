@@ -1,4 +1,4 @@
-class Toolbar {
+class ToolbarElement {
   constructor(game, imgSrc, x, y) {
     this.img = new Image();
     this.img.src = imgSrc;
@@ -25,6 +25,7 @@ class Toolbar {
     this.game.ctx.font = "30px Lobster";
     this.game.ctx.fillText('10', 165, 690);
   }
+  
   displayScore() {
     this.game.ctx.fillStyle = 'rgb(213,0,0)';
     this.game.ctx.strokeStyle = 'black';
@@ -33,4 +34,3 @@ class Toolbar {
     this.game.ctx.fill();
   }
 }
-
