@@ -29,9 +29,4 @@ function startGame() {
   setBG('bg_main.png', canvasBG, createGrid);
   setTB('toolbar_bg.png', canvasBG) 
 
-  setInterval(() => {
-    if (game.inGame) {
-      game.addElf();
-    }
-  }, 5500);
 }
