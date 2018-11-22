@@ -62,14 +62,17 @@ class Game {
 	}
 
 	addElf() {
-		if(this.score >= 10 && this.score < 20 ) {
+		if(this.score >= 10 && this.score < 15 ) {
 			this.initElves();
 			this.spawnSpeed = 3000;
 			this.spawnChance = 3;
 		} else if(this.score >= 15 && this.score < 20) {
 			this.initElves();
-			this.spawnSpeed = 100;
+			this.spawnSpeed = 2000;
 			this.spawnChance = 2;
+		} else if(this.score > 20) {
+			this.initElves();
+			this.spawnSpeed = 100;
 		}
 		console.log(this.spawnChance, ' : ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
