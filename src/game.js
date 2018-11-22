@@ -9,7 +9,6 @@ class Game {
 		this.toobarElements = [];
 		this.spawnChance = 4;
 		this.spawnSpeed = 5500; // ms
-		this.spawnInterval;
 		this.addToolbarElements('./assets/gbm_small.png',0, 600);
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
 		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
@@ -22,8 +21,7 @@ class Game {
 	}
 
 	initElves() {
-		clearInterval(this.spawnInterval);
-		this.spawnInterval = setInterval(() => {
+		setTimeout(() => {
 			if (this.inGame) {
 				this.addElf();
 			}
@@ -63,25 +61,24 @@ class Game {
 
 	addElf() {
 		if(this.score >= 10 && this.score < 15 ) {
-			this.initElves();
 			this.spawnSpeed = 3000;
 			this.spawnChance = 3;
 		} else if(this.score >= 15 && this.score < 20) {
-			this.initElves();
-			this.spawnSpeed = 2000;
+			this.spawnSpeed = 2500;
 			this.spawnChance = 2;
 		} else if(this.score > 20) {
-			this.initElves();
+			thiss.spawnSpeed = 2000;
 			this.spawnChance = 2;
-			this.spawnSpeed = 100;
 		}
-		console.log(this.spawnChance, ' : ', this.spawnSpeed);
+
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 11, 0.3));
 		}
+
+		this.initElves();
 	}
 
 	addToolbarElements(imgSrc, x, y) {
