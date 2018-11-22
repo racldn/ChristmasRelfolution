@@ -9,7 +9,6 @@ class Toolbar {
         this.init();
     }
 
-
     draw() {
         this.game.ctx.drawImage(this.img, this.elementX, this.y);
         this.displayScore();
@@ -51,5 +50,4 @@ class Toolbar {
             }
         }, true);
     }
-
 }

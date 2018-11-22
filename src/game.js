@@ -15,7 +15,16 @@ class Game {
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
 		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.5)
+		this.initElves();
 		this.update();
+	}
+
+	initElves() {
+		setInterval(() => {
+			if (this.inGame) {
+				this.addElf();
+			}
+		}, 5500);
 	}
 
 	update() {
