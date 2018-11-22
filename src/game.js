@@ -8,8 +8,8 @@ class Game {
 		this.christmasSpirit = 150;
 		this.toobarElements = [];
 		this.spawnChance = 4;
-		this.spawnSpeed = 5500; // ms
-		this.spawnInterval;
+    this.spawnSpeed = 5500; // ms
+    this.firstSpawn = true;
 		this.addToolbarElements('./assets/gbm_small.png',0, 600);
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
 		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
@@ -22,12 +22,18 @@ class Game {
 	}
 
 	initElves() {
-		clearInterval(this.spawnInterval);
-		this.spawnInterval = setInterval(() => {
+    if (this.firstSpawn) this.spawnSpeed = 1500;
+
+		setTimeout(() => {
 			if (this.inGame) {
 				this.addElf();
 			}
-		}, this.spawnSpeed);
+    }, this.spawnSpeed);
+
+    if (this.firstSpawn) {
+      this.spawnSpeed = 5500;
+      this.firstSpawn = false;
+    }
 	}
 
 	update() {
@@ -53,35 +59,33 @@ class Game {
 				collision.elfHitsBullet(elf, this);
 			});
 
-			requestAnimationFrame(() => {
+			setTimeout(() => {
 				this.update();
-			});
+			}, 1000 / 60);
 		} else {
 			this.endGame()
 		}
 	}
 
 	addElf() {
-		if(this.score >= 10 && this.score < 15 ) {
-			this.initElves();
+		if(this.score >= 5 && this.score < 10 ) {
 			this.spawnSpeed = 3000;
 			this.spawnChance = 3;
-		} else if(this.score >= 15 && this.score < 20) {
-			this.initElves();
-			this.spawnSpeed = 2000;
+		} else if(this.score >= 10 && this.score < 15) {
+			this.spawnSpeed = 2500;
 			this.spawnChance = 2;
-		} else if(this.score > 20) {
-			this.initElves();
+		} else if(this.score > 15) {
 			this.spawnChance = 2;
-			this.spawnSpeed = 100;
+			this.spawnSpeed = 1500;
 		}
-		console.log(this.spawnChance, ' : ', this.spawnSpeed);
+		console.log('sc: ', this.spawnChance, ' : ss: ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
-
 		} else {
 			this.elves.push(new Elf(this, './assets/green-elf.png', 11, 0.3));
-		}
+    }
+    
+    this.initElves();
 	}
 
 	addToolbarElements(imgSrc, x, y) {
