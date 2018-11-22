@@ -8,7 +8,7 @@ class Game {
 		this.christmasSpirit = 150;
 		this.toobarElements = [];
 		this.spawnChance = 4;
-    this.spawnSpeed = 5500; // ms
+    this.spawnSpeed = 1500; // ms
     this.firstSpawn = true;
 		this.addToolbarElements('./assets/gbm_small.png',0, 600);
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
@@ -22,8 +22,6 @@ class Game {
 	}
 
 	initElves() {
-    if (this.firstSpawn) this.spawnSpeed = 1500;
-
 		setTimeout(() => {
 			if (this.inGame) {
 				this.addElf();
