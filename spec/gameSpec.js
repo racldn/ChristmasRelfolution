@@ -37,7 +37,6 @@ describe("Game", function(){
     it("should call elf's update method", function(){
       game.addElf();
       game.update();
-      // expect(elf.update).toHaveBeenCalled();
       expect(collision.elfHitsRightWall).toHaveBeenCalled();
       expect(collision.elfHitsWeapon).toHaveBeenCalled();
       expect(collision.elfHitsBullet).toHaveBeenCalled();
