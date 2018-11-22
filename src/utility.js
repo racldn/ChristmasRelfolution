@@ -17,12 +17,12 @@ function createGrid() {
   }
 };
 
-function setBG(name, canvas, height, callback) {
+function setBG(name, canvas, callback) {
   let ctx = canvas.getContext('2d');
   let bg = new Image();
   bg.src = `./assets/${name}`
   bg.onload = function() {
-    ctx.drawImage(bg, 0, 0, 800, height);
+    ctx.drawImage(bg, 0, 0, 800, 600);
     callback.call();
   }
 }
