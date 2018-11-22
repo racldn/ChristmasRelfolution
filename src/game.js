@@ -72,6 +72,7 @@ class Game {
 			this.spawnChance = 2;
 		} else if(this.score > 20) {
 			this.initElves();
+			this.spawnChance = 2;
 			this.spawnSpeed = 100;
 		}
 		console.log(this.spawnChance, ' : ', this.spawnSpeed);
