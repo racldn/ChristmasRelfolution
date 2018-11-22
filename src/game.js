@@ -31,7 +31,7 @@ class Game {
     }, this.spawnSpeed);
 
     if (this.firstSpawn) {
-      this.spawnSpeed = 5000;
+      this.spawnSpeed = 4700;
       this.firstSpawn = false;
     }
 	}
@@ -69,17 +69,17 @@ class Game {
 
 	addElf() {
 		if(this.score >= 5 && this.score < 7 ) {
-			this.spawnSpeed = 4500;
+			this.spawnSpeed = 4300;
 		} else if(this.score >= 7 && this.score < 10) {
-			this.spawnSpeed = 4100;
+			this.spawnSpeed = 3900;
 		} else if(this.score >= 10 && this.socre <= 14) {
       this.spawnChance = 3;
-			this.spawnSpeed = 3700;
+			this.spawnSpeed = 3400;
 		} else if(this.score >= 14 && this.socre < 19) {
       this.spawnChance = 2;
-      this.spawnSpeed = 3200;
+      this.spawnSpeed = 3100;
     } else if(this.score > 19) {
-      this.spawnSpeed = 2500;
+      this.spawnSpeed = 2450;
     }
 		console.log('sc: ', this.spawnChance, ' : ss: ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
