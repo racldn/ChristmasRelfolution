@@ -1,7 +1,7 @@
 class DragDrop {
   constructor(game) {
     this.game = game
-    this.canvasOffset = canvas.getBoundingClientRect();
+    this.canvasOffset = this.game.canvas.getBoundingClientRect();
     this.selection;
     this.dragOffsetX = 0;
     this.dragOffsetY = 0;
@@ -36,7 +36,6 @@ class DragDrop {
 
       let weapon;
 
-      
       if (this.mouse.x >= 0 && this.mouse.x < 100) {
         if(this.game.christmasSpirit < 50) return;
         weapon = new GingerbreadMan(0, 600, this.game);
