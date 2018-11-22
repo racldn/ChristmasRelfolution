@@ -1,7 +1,7 @@
 class DragDrop {
   constructor(game) {
     this.game = game
-    this.canvasOffset = canvas.getBoundingClientRect();
+    this.canvasOffset = this.game.canvas.getBoundingClientRect();
     this.selection;
     this.dragOffsetX = 0;
     this.dragOffsetY = 0;
@@ -21,6 +21,7 @@ class DragDrop {
     this.game.canvas.addEventListener('mouseup', (event) => {
       if (this.isOccupied(this.mouse, this.weapons)) return;
       if (this.mouse.y > 600) return;
+
       let tile = this.findTile();
 
       this.selection.y = tile.y;
@@ -28,18 +29,34 @@ class DragDrop {
       this.selection.isActive = true;
       this.selection = null;
     }, true);
-  }
 
-  addSelection(obj) {
-    if(this.selection) return false;
-    this.selection = obj;
-    this.dragOffsetX = this.mouse.x - obj.x;
-    this.dragOffsetY = this.mouse.y - obj.y;
+    this.game.canvas.addEventListener('mousedown', (event) => {
+      if(this.game.dragDrop.selection) return;
+      if(!(this.mouse.y >= 600 && this.mouse.y <= 700)) return; // not in toolbar!
+
+      let weapon;
+
+      if (this.mouse.x >= 0 && this.mouse.x < 100) {
+        if(this.game.christmasSpirit < 50) return;
+        weapon = new GingerbreadMan(0, 600, this.game);
+      } else if (this.mouse.x >= 100 && this.mouse.x < 200) {
+        if(this.game.christmasSpirit < 10) return;
+        weapon = new ChristmasPudding(100, 600, this.game);   
+      } else {
+        return; // RETURN IF 'NULL' IS SELECTED - WILL CRASH IF REMOVED
+      }
+
+      this.game.christmasSpirit -= weapon.cost;     
+      this.game.addWeapon(weapon);
+      this.selection = weapon;
+      this.dragOffsetX = this.mouse.x - weapon.x;
+      this.dragOffsetY = this.mouse.y - weapon.y;
+    }, true);
   }
 
   updateMousePos(event) {
-    this.mouse.x = event.pageX - this.canvasOffset.top
-    this.mouse.y = event.pageY - this.canvasOffset.left
+    this.mouse.x = (event.clientX - this.canvasOffset.left) / (this.canvasOffset.right - this.canvasOffset.left) * canvas.width;
+    this.mouse.y = (event.clientY - this.canvasOffset.top) / (this.canvasOffset.bottom - this.canvasOffset.top) * canvas.height;
   }
 
   isOccupied() {

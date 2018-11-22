@@ -1,6 +1,3 @@
-// borrowed from https://designers.hubspot.com/blog/how-to-implement-an-animated-snow-effect-using-html5-canvas-and-javascript
-
-// var snow = (function createSnow() {
 function createSnow(canvas){
   let ctx = canvas.getContext("2d");
   let maxFlakes = 255;
@@ -51,4 +48,3 @@ function createSnow(canvas){
     draw: draw
   }
 }
-// })();

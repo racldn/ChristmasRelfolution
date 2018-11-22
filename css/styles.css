@@ -5,11 +5,21 @@
   src: url(https://fonts.gstatic.com/s/lobster/v20/neILzCirqoswsqX9zoKmM4MwWJU.woff2);
 }
 
+body {
+  background-image: url("../assets/website-bg.png");
+  background-repeat: repeat;
+}
+
 canvas {
+  top: 50%;
+  left: 50%;
+  display: block;
+  margin: auto;
   position: absolute;
+  transform: translate(-50%, -50%);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #canvas-snow {
-  position: absolute;
   opacity: 0.5;
 }
