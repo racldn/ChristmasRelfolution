@@ -5,8 +5,9 @@ class Game {
 		this.elves = [];
 		this.bullets = [];
 		this.weapons = [];
-		this.christmasSpirit = 200;
+		this.christmasSpirit = 150;
 		this.toobarElements = [];
+		this.spawn = 4;
 		this.addToolbarElements('./assets/gbm_small.png',0, 600);
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
 		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
@@ -49,11 +50,17 @@ class Game {
 	}
 
 	addElf() {
-		if(Math.floor(Math.random() * 5) < 4) {
+		if(this.score >= 10 && this.score < 20 ) {
+			this.spawn = 3;
+		} else if(this.score >= 15 && this.score < 20) {
+			this.spawn = 2;
+		}
+		console.log(this.spawn);
+		if(Math.floor(Math.random() * 5) < this.spawn) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 
 		} else {
-			this.elves.push(new Elf(this, './assets/green-elf.png', 9, 0.3));
+			this.elves.push(new Elf(this, './assets/green-elf.png', 11, 0.3));
 		}
 	}
 
