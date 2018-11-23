@@ -27,6 +27,6 @@ function startGame() {
   let game = new Game(canvas);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   setBG('bg_main.png', canvasBG, createGrid);
-  setTB('toolbar_bg.png', canvasBG) 
-
+  setTB('toolbar_bg.png', canvasBG);
+  setupToolbar(game);
 }

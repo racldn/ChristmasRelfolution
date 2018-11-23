@@ -6,9 +6,9 @@ class Game {
 		this.bullets = [];
 		this.weapons = [];
 		this.christmasSpirit = 150;
-		this.toobarElements = [];
+		this.toolbarElements = [];
 		this.spawnChance = 4;
-    this.spawnSpeed = 1500; // ms
+    this.spawnSpeed = 1500; // This only counts for the FIRST spawn. Every time after it's set inside initElves()
     this.firstSpawn = true;
 		this.addToolbarElements('./assets/gbm_small.png',0, 600);
 		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
@@ -16,7 +16,7 @@ class Game {
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
-		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.5)
+		this.music = new Sound("assets/audio/JingleBellRock.mp3", 0.4, true)
 		this.initElves();
 		this.update();
 	}
@@ -40,7 +40,7 @@ class Game {
 		if (this.inGame) {
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-			this.toobarElements.forEach((element) => {
+			this.toolbarElements.forEach((element) => {
 				element.draw();
 			});
 			this.weapons.forEach((weapon) => {
@@ -65,6 +65,10 @@ class Game {
 		}
 	}
 
+	addToolbarElements(imgSrc, x, y) {
+		this.toolbarElements.push(new ToolbarElement(this, imgSrc, x, y));
+	}
+
 	addElf() {
 		if(this.score >= 5 && this.score < 7 ) {
 			this.spawnSpeed = 4300;
@@ -79,7 +83,6 @@ class Game {
     } else if(this.score > 19) {
       this.spawnSpeed = 2450;
     }
-		console.log('sc: ', this.spawnChance, ' : ss: ', this.spawnSpeed);
 		if(Math.floor(Math.random() * 5) < this.spawnChance) {
 			this.elves.push(new Elf(this, './assets/red-elf.png', 6, 0.5));
 		} else {
@@ -89,17 +92,25 @@ class Game {
     this.initElves();
 	}
 
-	addToolbarElements(imgSrc, x, y) {
-		this.toobarElements.push(new Toolbar(this, imgSrc, x, y));
-	}
+	removeElf(elf) {
+		this.elves.splice(this.elves.indexOf(elf), 1);
+	};
 
 	addBullet(bullet) {
 		this.bullets.push(bullet);
 	}
 
+	removeBullet(bullet) {
+		this.bullets.splice(this.bullets.indexOf(bullet), 1);
+	};
+
 	addWeapon(weapon) {
 		this.weapons.push(weapon)
-	}
+	};
+
+	removeWeapon(weapon) {
+		this.weapons.splice(this.weapons.indexOf(weapon), 1);
+	};
 
 	endGame() {
 		let canvasBG = document.getElementById("canvas-bg");
@@ -109,7 +120,6 @@ class Game {
 		this.ctx.font = "30px Lobster";
 		setBG('bg_main.png', canvasBG);
 		setTB('toolbar_bg.png', canvasBG);
-
 
 		if (this.score == 1) {
 			renderText(`You've renegotiated ${this.score} contract!`, this.canvas);

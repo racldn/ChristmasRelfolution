@@ -47,4 +47,8 @@ class Elf {
     this.x += this.dx;
     this.draw();
   }
+
+  subtractHitpoints(attackerAP) {
+    this.hitpoints -= attackerAP;
+  }
 }
