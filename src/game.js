@@ -10,9 +10,6 @@ class Game {
 		this.spawnChance = 4;
     this.spawnSpeed = 1500; // This only counts for the FIRST spawn. Every time after it's set inside initElves()
     this.firstSpawn = true;
-		this.addToolbarElements('./assets/gbm_small.png',0, 600);
-		this.addToolbarElements('./assets/christmas-pudding-small.png',100, 600);
-		this.addToolbarElements('./assets/christmasSpirit.png', 610, 612);
 		this.score = 0;
 		this.inGame = true;
 		this.dragDrop = new DragDrop(this);
